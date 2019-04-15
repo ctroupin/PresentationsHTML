@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+
+	<title>Spatial data interpolation</title>
+
+	<meta name="description" content="Spatial data interpolation">
+	<meta name="author" content="Charles">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+	<link rel="stylesheet" href="css/reveal.css">
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css"
+	integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
+	crossorigin=""/>
+	<link rel="stylesheet" href="css/theme/sharlo.css" id="theme">
+	<link rel="stylesheet" href="css/pres.css">
+	<link rel="stylesheet" href="css/academicons.css">
+
+	<!-- Printing and PDF exports -->
+	<script>
+	var link = document.createElement( 'link' );
+	link.rel = 'stylesheet';
+	link.type = 'text/css';
+	link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+	document.getElementsByTagName( 'head' )[0].appendChild( link );
+	</script>
+
+	<!--[if lt IE 9]>
+	<script src="lib/js/html5shiv.js"></script>
+	<![endif]-->
+</head>
+
+<body>
+
+	<div class="reveal">
+
+		<div class="slides">
+			<section>
+				<section class="center">
+					<h1>Using the EMODnet Data Ingestion Portal</h1>
+					<h2>To make your research data public</h2>
+
+					<p><img src="images/logo_gher.png" height="100px"/><img src="images/logo_uliege.jpeg" height="100px"/> <img src="images/logo_seadatacloud.png" height="100px"/> <img src="images/logo_emodnet.png" height="100px"/></p>
+					</section>
+
+			</section>
+
+			<section>
+				<section class="center">
+					<h1> What is EMODnet?</h1>
+				</section>
+
+				<section class="center">
+					<p><a href="http://www.emodnet.eu/">EMODnet</a> = European Marine Observation and Data Network</p>
+
+					<img src="images/logo_emodnet.png" height="150px"/>
+
+					<p>Long-term marine data initiative of <a href="https://ec.europa.eu/info/departments/maritime-affairs-and-fisheries_en">DG MARE</a></p>
+
+					<p><a href="https://ec.europa.eu/maritimeaffairs/policy/marine_knowledge_2020_en">Marine Knowledge</a> 2020 strategy</p>
+				</section>
+			</section>
+
+			<section>
+				<section class="center">
+					<h1> Why should I make my data public?</h1>
+				</section>
+
+				<section class="center">
+					<img src="images/FOCUS/h2020.jpg" height="600px"/>
+				</section>
+
+				<section class="center">
+					<h3> Article 29.3 <i>"Open access to research data"</i></h3>
+					<img src="images/FOCUS/h2020_293.png" height="300px"/>
+				</section>
+
+			</section>
+
+			<section>
+				<section class="center">
+					<h1> Why not make my data public?</h1>
+				</section>
+
+				<section class="center">
+					<i class="fas fa-hourglass-end"></i>
+				</section>
+
+
+
+			</section>
+
+			<section>
+				<section class="center">
+					<h1> [How] does it work?</h1>
+				</section>
+
+				<section>
+					<h1> ⏰ Wake up your data</h1>
+					<iframe width="560" height="315" src="https://www.youtube.com/embed/p3vwngxyXuo?start=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+				</section>
+
+			</section>
+
+
+			<section class="center">
+				<h1> Thanks for your attention </h1>
+			</section>
+
+
+		</div>
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+		// Full list of configuration options available at:
+		// https://github.com/hakimel/reveal.js#configuration
+		Reveal.initialize({
+			controls: true,
+			progress: true,
+			history: true,
+			center: false,
+
+			transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+			// Optional reveal.js plugins
+			dependencies: [
+				{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+				{ src: 'plugin/zoom-js/zoom.js', async: true },
+				{ src: 'plugin/notes/notes.js', async: true },
+				{ src: 'plugin/markdown/marked.js', async: true },
+				{ src: 'plugin/markdown/markdown.js', async: true },
+				{ src: 'plugin/embed-tweet/embed-tweet.js' },
+				{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+			]
+		});
+
+		function runOnState(state, o) {
+			Reveal.addEventListener(state, function(e) {
+				var removeListener = function() {
+					o.stop();
+					Reveal.removeEventListener('slidechanged', removeListener);
+				}
+				o.start();
+				setTimeout(function() {
+					Reveal.addEventListener('slidechanged', removeListener);
+				}, 0);
+			});
+		}
+
+		runOnState('diva-map', window.divaMap);
+		</script>
+
+	</body>
+	</html>
