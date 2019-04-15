@@ -1,0 +1,442 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+
+	<title>Spatial data interpolation</title>
+
+	<meta name="description" content="Spatial data interpolation">
+	<meta name="author" content="Charles">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+	<link rel="stylesheet" href="css/reveal.css">
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css"
+	integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
+	crossorigin=""/>
+	<link rel="stylesheet" href="css/theme/sharlo.css" id="theme">
+	<link rel="stylesheet" href="css/pres.css">
+	<link rel="stylesheet" href="css/academicons.css">
+	<link rel="stylesheet" href="https://cdn.knightlab.com/libs/juxtapose/latest/css/juxtapose.css">
+
+	<!-- Printing and PDF exports -->
+	<script>
+	var link = document.createElement( 'link' );
+	link.rel = 'stylesheet';
+	link.type = 'text/css';
+	link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+	document.getElementsByTagName( 'head' )[0].appendChild( link );
+	</script>
+
+	<!--[if lt IE 9]>
+	<script src="lib/js/html5shiv.js"></script>
+	<![endif]-->
+</head>
+
+<body>
+
+	<div class="reveal">
+
+		<div class="slides">
+			<section>
+				<section>
+					<h2>Generating ocean climatologies from in situ observations</h2>
+
+					<p>
+						<i class="fab fa-github"></i> gher-ulg<br>
+						<i class="fab fa-twitter"></i> @GHER_ULiege <br>
+						<i class="ai ai-orcid"></i> 0000-0002-0265-1021
+					</p>
+					<p><img src="images/logo_gher.png" height="100px"/><img src="images/logo_uliege.jpeg" height="100px"/> <img src="images/logo_seadatacloud.png" height="100px"/> <img src="images/logo_imdis.png" height="100px"/></p>
+
+					<p>Alexander Barth, Charles Troupin, Sylvain Watelet,<br> Aida Alvera-Azcárate and Jean-Marie Beckers</p>
+				</section>
+
+				<section class="center">
+					<h2>
+						<p>Collect once,</p>
+						<p class="fragment fade-up">Use many times</p>
+						<p class="fragment fade-up">And create products with DIVA</p>
+					</h2>
+				</section>
+
+				<section>
+					<h1> Conclusions </h1>
+					<ol>
+  					<li> `DIVA` is a software tool written in Fortran </li>
+						<li> `DIVAnd` is a software tool written in Julia </li>
+						<li> Both are designed for the spatial interpolation of data </li>
+					</p>
+				</section>
+			</section>
+			<section>
+
+				<section class="center">
+					<h1>Methodology:<br> spatial interpolation</h1>
+				</section>
+
+				<section data-state="diva-map">
+					<h2>Gridding problem</h2>
+					<div style="text-align:left" id="diva-map" class="map"></div>
+				</section>
+
+				<section data-markdown>
+					### Constraints
+					1. **Closer** observations have a **stronger** influence
+					2. Different **confidence** in some measurements
+					3. **Physical** barriers and currents
+					4. Deal with up to **millions** of points
+					5. Many sources of **errors** on observations
+					6. Need an associated **error field**
+
+					![Approximation](images/approximation.jpg)
+				</section>
+
+				<section>
+					<h2>DIVA</h2>
+					Data-Interpolating Variational Analysis<br>
+					<a href="https://github.com/gher-ulg/DIVA">https://github.com/gher-ulg/DIVA</a><br>
+					<img src="https://zenodo.org/badge/80114691.svg"/> <br>
+					<img src="images/logo_diva.png"/> <br>
+				</section>
+
+				<section>
+					<h2>DIVAnd</h2>
+					<it>n</it>-dimensional generalisation of DIVA<br>
+					<a href="https://github.com/gher-ulg/DIVAnd.jl">https://github.com/gher-ulg/DIVAnd.jl</a><br>
+					<img src="https://zenodo.org/badge/79277337.svg"/> <br>
+					<img src="images/DIVAnd_github.jpg" width="80%"/> <br>
+				</section>
+
+				<section>
+					<h2>DIVAnd</h2>
+					<a href="https://www.geosci-model-dev.net/7/225/2014/">https://www.geosci-model-dev.net/7/225/2014/</a><br>
+					<img src="images/divand_paper.png"/> <br>
+				</section>
+
+				<section>
+					<h2>How to use it?</h2>
+					Jupyter notebooks as a guideline for the climatologies<br>
+					<img src="images/divand_notebooks.jpg"/> <br>
+					<a href="https://github.com/gher-ulg/Diva-Workshops">https://github.com/gher-ulg/Diva-Workshops</a><br>
+				</section>
+
+				<section style="text-align: left;"</section>
+					<h2>Fortran - MATLAB - Julia...</h2>
+
+					<img src="images/logo_julia.png" height="75px"/><br>
+					<p s>
+						Creation: 2012<br>
+					  1.0.0 released: Aug 9, 2018<br>
+						Simplicity of Python + speed of C or Fortran<br>
+						<br>
+						<a href="http://julialang.org/">http://julialang.org/</a><br>
+						<a href="https://github.com/JuliaLang/julia">https://github.com/JuliaLang/julia</a>
+					</p>
+
+				</section>
+
+				<section >
+					<h2>Who is Julia?</h2>
+
+					<p class="fragment">
+						Julia Child (1912-2004)<br>
+						<img src="images/JuliaChild2.jpg" height="400px"/><br>
+
+						<h6 class="fragment">By Lynn Gilbert - Own work, CC BY-SA 4.0, https://commons.wikimedia.org/w/index.php?curid=51678880
+						</h6>
+					</p>
+
+				</section>
+
+				<section>
+					<h3> Why did we chose Julia? </h3>
+					<img src="images/harder_better.jpg" height="500px"/><br>
+
+					<h5>Source: http://daftpunk.wikia.com, No copyright infringement is intended</h5>
+			  </section>
+
+				<section>
+					<h2>Better...</h2>
+					<br>
+					<p style="text-align:left">
+						Multiple dispatch<br>
+						Math-friendly syntax<br>
+						Unicode support: π, η, ∫ϵα
+
+					</p>
+
+					<pre><code class="julia">
+julia> 🐟 = 1.
+julia> 🐢 = 2.
+julia> N = 🐟 + 🐢
+3.0
+					</code></pre>
+
+
+				</section>
+
+				<section>
+					<h2>Faster</h2>
+					<p style="text-align:left">
+						Just-in-time (JIT) compiled<br>
+						Parallelism
+					</p>
+
+					<pre><code class="julia">
+function fib(n::Int)
+  f=Vector{Int}(undef, n+1)
+  f[1]=f[2]=1;
+  for i=3:n+1
+    f[i]=f[i-1]+f[i-2]
+  end
+  return f
+end
+ff = @time fib(400000000);
+1.158971 seconds (18.52 k allocations: 2.981 GiB, 0.84% gc time)
+					</code></pre>
+				</section>
+
+				<section>
+					<h2>Stronger</h2>
+					<p style="text-align:left">
+						<b>Metaprogramming:</b><br>
+						Julia programs can read, analyse, generate other Julia programs<br>
+						<br>
+						"Easy" interfacing: R, Python, ...
+					</p>
+<pre><code class="julia">
+@pyimport numpy.random as nr
+nr.rand(3,4)
+</code></pre>
+				</section>
+
+				<section>
+					<h2>Harder</h2>
+
+					<p style="text-align:left">
+						Learning a new and evolving language<br>
+						Transition from 0.6 to 1.0<br>
+					</p>
+
+					<img src="images/julia_release.jpg" height="400px"/><br>
+
+				</section>
+
+			</section>
+
+			<section>
+
+				<section class="center">
+					<h1>DIVAnd<br> in the VRE</h1>
+				</section>
+
+				<section class="center">
+					<h2>In short...</h2>
+					<p style="text-align:left"><br>
+						1. Ingest data from webODV (netCDF)<br>
+						2. Set the analysis parameters<br>
+						3. Apply DIVAnd interpolation<br>
+						4. Export the results in a new netCDF<br>
+						5. Visualise using Deltares toolbox<br>
+					</p>
+
+				</section>
+
+				<section class="center">
+					<img src="images/restAPI3.jpg" height="350px"/><br>
+				</section>
+
+				<section class="center">
+					<h2>Implementation</h2>
+					<p style="text-align:left"><br>
+						1. Julia using HTTP and JSON modules<br>
+						2. Deployment as a Docker container<br>
+					</p>
+						<img src="images/DIVAnd-REST.jpg" height="350px"/><br>
+				</section>
+
+				<section>
+				  <video autoplay="true" loop="true" muted="true" width="640">
+					  <source data-src="images/DIVAnd-REST-VRE-GUI.mp4" type="video/mp4"/>
+					</video>
+				</section>
+
+			</section>
+			<section>
+				<section class="center">
+					<h1>Applications</h1>
+				</section>
+
+				<section>
+					<h2>SeaDataCloud climatologies</h2>
+					<img src="images/snd_clim.jpg" height="450px"/><br>
+					<a href="https://www.seadatanet.org/Products/Climatologies">https://www.seadatanet.org/Products/Climatologies</a>
+				</section>
+
+				<section>
+					<h2>EMODnet Chemistry gridded fields</h2>
+					<img src="images/EMODnetChemi_prod.jpg" height="450px"/><br>
+					<a href="http://www.emodnet-chemistry.eu/products">http://www.emodnet-chemistry.eu/products</a>
+				</section>
+
+				<section>
+					<h2>EMODnet Biology products</h2>
+					<img src="images/EMODnetBio_prod.png" height="450px"/><br>
+					<a href="http://www.emodnet-biology.eu/data-products">http://www.emodnet-biology.eu/data-products</a>
+				</section>
+
+
+			</section>
+
+			<section>
+
+				<section class="center">
+					<h1>#Innovations</h1>
+				</section>
+
+				<section data-markdown data-transition="fade-in slide-out">
+					## High-frequency radar interpolation
+					Synthetic velocity field, red arrow = measurement
+					![synthetic:](images/current1.png)
+				</section>
+
+				<section data-markdown data-transition="fade-in slide-out">
+					## High-frequency radar interpolation
+					Adding the influence of the coast
+					![Coastline:](images/current2.png)
+				</section>
+
+				<section data-markdown data-transition="fade-in slide-out">
+					## High-frequency radar interpolation
+					Low horizontal divergence of currents
+					![Divergence:](images/current3.png)
+				</section>
+
+				<section data-markdown data-transition="fade-in slide-out">
+					## High-frequency radar interpolation
+					Including Coriolis force and geostrophically balanced mean flow<br>
+					![Coriolis:](images/divand_hfradar_3D_Coriolis_geo.png)
+
+					Test areas: Ibiza Channel, Gulf of Trieste
+				</section>
+
+				<section>
+					<h2>Neural network</h2>
+					<div class="tweet" data-src="https://twitter.com/xaprb/status/930674776317849600"></div>
+				</section>
+
+				<section>
+					<h2>Neural network</h2>
+					<p style="text-align:left"> From univariate to multivariate...</p>
+
+					<p style="text-align:left" ><b>Principle:</b> <br>
+					Use other co-variables to improve the interpolation<br>
+					Use neural network to derive the relationships between the variables</p>
+
+				</section>
+
+				<section data-markdown>
+					### Application: zooplankton count in the Baltic Sea
+
+					**Covariables:**
+					* [Dissolved oxygen](http://www.emodnet-chemistry.eu/products/catalogue#/metadata/087a72c0-c243-11e8-bac2-5ce0c5469bc7) → EMODnet Chemistry
+					* [Salinity](https://www.seadatanet.org/Products#/metadata/bf35a7c5-c843-4a23-8040-07ddcf3d8e71) → SeaDataCloud
+					* [Temperature](https://www.seadatanet.org/Products#/metadata/bf35a7c5-c843-4a23-8040-07ddcf3d8e71) → SeaDataCloud
+					* [Chlorophyll concentration](https://oceancolor.gsfc.nasa.gov/l3/) → MODIS-Aqua from NASA
+					* [Bathymetry](https://www.gebco.net/) → EMODnet Bathymetry, GEBCO
+					* [Distance from coast](https://gcmd.nasa.gov/KeywordSearch/Metadata.do?Portal=idn_ceos&KeywordPath=%5BData_Center%3A+Short_Name%3D%27PacIOOS%27%5D&OrigMetadataNode=GCMD&EntryId=dist2coast_1deg&MetadataView=Full&MetadataType=0&lbnode=mdlb1) → GSFC, NASA
+				</section>
+
+				<section>
+					<h3> Application: zooplankton count in the Baltic Sea</h3>
+
+					<p class="fragment step-fade-in-then-out"><img src="images/KeratellaCruciformis-2007.png" height="450px"/></p>
+					<p class="fragment step-fade-in-then-out"><img src="images/KeratellaCruciformis-2008.png" height="450px"/></p>
+					<p class="fragment step-fade-in-then-out"><img src="images/KeratellaCruciformis-2009.png" height="450px"/></p>
+					<p class="fragment step-fade-in-then-out"><img src="images/KeratellaCruciformis-2010.png" height="450px"/></p>
+					<p class="fragment step-fade-in-then-out"><img src="images/KeratellaCruciformis-2011.png" height="450px"/></p>
+					<p class="fragment step-fade-in-then-out"><img src="images/KeratellaCruciformis-2012.png" height="450px"/></p>
+				</section>
+
+		  </section>
+
+			<section>
+				<section>
+					<h1> Conclusions </h1>
+					<ol>
+  					<li> `DIVA` is a software tool written in Fortran </li>
+						<li> `DIVAnd` is a software tool written in Julia </li>
+						<li> Both are designed for the spatial interpolation of data </li>
+						<li> We are open and willing to improve and adapt the code for different data types</li>
+					</p>
+				</section>
+
+
+				<section class="center">
+					<h1> Thanks for your attention </h1>
+					<h6> (and use `DIVA{nd}` many times)</h6>
+				</section>
+			</section>
+
+
+
+		</div>
+		<script src="https://cdn.knightlab.com/libs/juxtapose/latest/js/juxtapose.min.js"></script>
+		<script src="lib/js/head.min.js"></script>
+		<script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"
+		integrity="sha512-/Nsx9X4HebavoBvEBuyp3I7od5tA0UzAxs+j83KgC8PU0kgB4XiK4Lfe4y4cgBtaRJQEIFCW+oC506aPT2L1zw=="
+		crossorigin=""></script>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.heat/0.2.0/leaflet-heat.js"></script>
+		<script src="js/reveal.js"></script>
+		<script src="js/maps.js"></script>
+		<script src="js/basemaps.js"></script>
+		<script type="text/javascript" src="./data/medsea_coast.js"></script>
+		<script type="text/javascript" src="./data/medsea_mesh.js"></script>
+		<script type="text/javascript" src="./data/data_position5.dat"></script>
+		<script type="text/javascript" src="./data/grid.js"></script>
+		<script type="text/javascript" src="./data/finegrid.js"></script>
+		<script type="text/javascript" src="./data/temperature.js"></script>
+		<script>
+
+		// Full list of configuration options available at:
+		// https://github.com/hakimel/reveal.js#configuration
+		Reveal.initialize({
+			controls: true,
+			progress: true,
+			history: true,
+			center: false,
+
+			transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+			// Optional reveal.js plugins
+			dependencies: [
+				{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+				{ src: 'plugin/zoom-js/zoom.js', async: true },
+				{ src: 'plugin/notes/notes.js', async: true },
+				{ src: 'plugin/markdown/marked.js', async: true },
+				{ src: 'plugin/markdown/markdown.js', async: true },
+				{ src: 'plugin/embed-tweet/embed-tweet.js' },
+				{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+			]
+		});
+
+		function runOnState(state, o) {
+			Reveal.addEventListener(state, function(e) {
+				var removeListener = function() {
+					o.stop();
+					Reveal.removeEventListener('slidechanged', removeListener);
+				}
+				o.start();
+				setTimeout(function() {
+					Reveal.addEventListener('slidechanged', removeListener);
+				}, 0);
+			});
+		}
+
+		runOnState('diva-map', window.divaMap);
+		</script>
+
+	</body>
+	</html>
