@@ -122,15 +122,15 @@
 									<h2>Better...</h2>
 									<br>
 									<p style="text-align:left">
-										Multiple dispatch<br>
-										Math-friendly syntax<br>
-										Unicode support: π, η, ∫ϵα
+Multiple dispatch<br>
+Math-friendly syntax<br>
+Unicode support: π, η, ∫ϵα
 									</p>
 
 									<pre><code>
-										julia> 🌊 = 1./3.
-										julia> cos(🌊*π)
-										0.5000000000000001
+julia> 🌊 = 1./3.
+julia> cos(🌊*π)
+0.5000000000000001
 									</code></pre>
 
 								</section>
@@ -143,16 +143,16 @@
 									</p>
 
 									<pre><code class="julia">
-										function fib(n::Int)
-										f=Vector{Int}(undef, n+1)
-										f[1]=f[2]=1;
-										for i=3:n+1
-										f[i]=f[i-1]+f[i-2]
-										end
-										return f
-										end
-										ff = @time fib(400000000);
-										1.158971 seconds (18.52 k allocations: 2.981 GiB, 0.84% gc time)
+function fib(n::Int)
+f=Vector{Int}(undef, n+1)
+f[1]=f[2]=1;
+for i=3:n+1
+f[i]=f[i-1]+f[i-2]
+end
+return f
+end
+ff = @time fib(400000000);
+1.158971 seconds (18.52 k allocations: 2.981 GiB, 0.84% gc time)
 									</code></pre>
 								</section>
 
@@ -165,8 +165,8 @@
 										"Easy" interfacing: R, Python, ...
 									</p>
 									<pre><code class="julia">
-										@pyimport numpy.random as nr
-										nr.rand(3,4)
+@pyimport numpy.random as nr
+nr.rand(3,4)
 									</code></pre>
 								</section>
 
