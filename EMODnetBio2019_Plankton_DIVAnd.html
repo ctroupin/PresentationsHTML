@@ -95,25 +95,20 @@
 			</section>
 
 			<section>
-			<section class="center" data-background="#D0ECC5">
+
+				<section data-state="emodnet-bio-map">
+					<h2>Data interpolation</h2>
+					<div style="text-align:left" id="emodnet-bio-map" class="map"></div>
+				</section>
+
+			</section>
+
+			<section>
+
+			<section class="center" data-background="EMODnet-Bio/Lisboa2015_9054.jpg">
 				<h1> Thanks for your attention </h1>
 			</section>
 
-			<section data-background-image="./images/DIVA_github.jpg" data-background-size="100px">
-				113
-			</section>
-
-			<section data-background-image="images/fig07b_winter_salinity_100.png" data-background-repeat="repeat" data-background-size="100px">
-				<h2>Tiled Backgrounds</h2>
-				<pre><code class="hljs html" style="word-wrap: break-word;">&lt;section data-background="image.png" data-background-repeat="repeat" data-background-size="100px"&gt;</code></pre>
-			</section>
-
-			<section data-background-video="https://s3.amazonaws.com/static.slid.es/site/homepage/v1/homepage-video-editor.mp4,https://s3.amazonaws.com/static.slid.es/site/homepage/v1/homepage-video-editor.webm" data-background-color="#000000">
-				<div style="background-color: rgba(0, 0, 0, 0.9); color: #fff; padding: 20px;">
-					<h2>Video Backgrounds</h2>
-					<pre><code class="hljs html" style="word-wrap: break-word;">&lt;section data-background-video="video.mp4,video.webm"&gt;</code></pre>
-				</div>
-			</section>
 			</section>
 
 		</div>
@@ -124,9 +119,13 @@
 		crossorigin=""></script>
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.heat/0.2.0/leaflet-heat.js"></script>
 		<script src="js/reveal.js"></script>
-		<script src="js/maps.js"></script>
+		<script src="js/maps-emodnet.js"></script>
 		<script src="js/basemaps.js"></script>
-		<script type="text/javascript" src="./data/europe.geojson"></script>
+		<script type="text/javascript" src="./data/EMODnet-bio/coarsegrid.js"></script>
+		<script type="text/javascript" src="./data/EMODnet-bio/finegrid.js"></script>
+		<script type="text/javascript" src="./data/EMODnet-bio/benthos-g1.js"></script>
+		<script type="text/javascript" src="./data/EMODnet-bio/benthos-g2.js"></script>
+		<script type="text/javascript" src="./data/EMODnet-bio/benthos-g3.js"></script>
 		<script>
 
 		// Full list of configuration options available at:
@@ -164,7 +163,7 @@
 			});
 		}
 
-		runOnState('emodnet-map', window.emodnetMap);
+		runOnState('emodnet-bio-map', window.emodnetBioMap);
 		</script>
 
 	</body>
