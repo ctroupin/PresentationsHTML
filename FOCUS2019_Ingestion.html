@@ -21,8 +21,8 @@
 	<link rel="stylesheet" href="lib/css/leaflet-reveal.css">
 
 	<style type="text/css">
-		.info { padding: 20px 20px; font: 20px/22px Arial, Helvetica, sans-serif; background: rgba(255,255,255,0.7);
-			box-shadow: 0 0 15px rgba(0,0,0,0.4); border-radius: 7px; }
+	.info { padding: 20px 20px; font: 20px/22px Arial, Helvetica, sans-serif; background: rgba(255,255,255,0.7);
+		box-shadow: 0 0 15px rgba(0,0,0,0.4); border-radius: 7px; }
 		.info h4 { margin: 0 0 5px; color: #777; font: 20px/22px Arial, Helvetica, sans-serif;}
 		.legend { text-align: left; line-height: 18px; color: #555; font: 20px/22px Arial, Helvetica, sans-serif;}
 		.legend i { width: 18px; height: 18px; float: left; margin-right: 8px; opacity: 0.7; }
@@ -36,158 +36,158 @@
 			color: red
 		}
 
-	</style>
+		</style>
 
-	<!-- Printing and PDF exports -->
-	<script>
-	var link = document.createElement( 'link' );
-	link.rel = 'stylesheet';
-	link.type = 'text/css';
-	link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
-	document.getElementsByTagName( 'head' )[0].appendChild( link );
-	</script>
+		<!-- Printing and PDF exports -->
+		<script>
+		var link = document.createElement( 'link' );
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+		document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
 
-	<!--[if lt IE 9]>
-	<script src="lib/js/html5shiv.js"></script>
-	<![endif]-->
-</head>
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
 
-<body>
+	<body>
 
-	<div class="reveal">
+		<div class="reveal">
 
-		<div class="slides">
-			<section>
-				<section class="center">
-					<h1>Using the EMODnet Data Ingestion Portal</h1>
-					<h2>To make your research data public</h2>
+			<div class="slides">
+				<section>
+					<section class="center">
+						<h1>Using the EMODnet Data Ingestion Portal</h1>
+						<h2>To make your research data public</h2>
 
-					<p><img src="images/logo_gher.png" height="100px"/><img src="images/logo_uliege.jpeg" height="100px"/> <img src="images/logo_seadatacloud.png" height="100px"/> <img src="images/logo_emodnet.png" height="100px"/></p>
+						<p><img src="images/logo_gher.png" height="100px"/><img src="images/logo_uliege.jpeg" height="100px"/> <img src="images/logo_seadatacloud.png" height="100px"/> <img src="images/logo_emodnet.png" height="100px"/></p>
 					</section>
 
-			</section>
-
-			<section>
-				<section class="center">
-					<h1> What is EMODnet?</h1>
-				</section>
-
-				<section class="center">
-					<p><a href="http://www.emodnet.eu/">EMODnet</a> = European Marine Observation and Data Network</p>
-
-					<img src="images/logo_emodnet.png" height="150px"/>
-
-					<p>Long-term marine data initiative of <a href="https://ec.europa.eu/info/departments/maritime-affairs-and-fisheries_en">DG MARE</a></p>
-
-					<p><a href="https://ec.europa.eu/maritimeaffairs/policy/marine_knowledge_2020_en">Marine Knowledge</a> 2020 strategy</p>
-				</section>
-
-				<section data-background-iframe="http://www.emodnet.eu" data-background-interactive>
-					<h2>http://www.emodnet.eu/</h2>
-				</section>
-
-				<section data-state="emodnet-map">
-					<h2>EMODnet partners</h2>
-					<div style="text-align:left" id="emodnet-map" class="map"></div>
-				</section>
-
-			</section>
-
-			<section>
-				<section class="center">
-					<h1> Why should I make my data public?</h1>
-				</section>
-
-				<section class="center">
-					<img src="images/FOCUS/h2020.jpg" height="600px"/>
-				</section>
-
-				<section class="center">
-					<h3> Article 29.3 <i>"Open access to research data"</i></h3>
-					<img src="images/FOCUS/h2020_293.png" height="300px"/>
-				</section>
-
-			</section>
-
-			<section>
-				<section class="center">
-					<h1> Why not make my data public?</h1>
-				</section>
-
-				<section class="center">
-					<h1><i class="fas fa-hourglass-end"></i></h1>
-				</section>
-
-			</section>
-
-			<section>
-				<section class="center">
-					<h1> [How] does it work?</h1>
 				</section>
 
 				<section>
-					<h1> ⏰ Wake up your data</h1>
-					<iframe width="560" height="315" src="https://www.youtube.com/embed/p3vwngxyXuo?start=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+					<section class="center">
+						<h1> What is EMODnet?</h1>
+					</section>
+
+					<section class="center">
+						<p><a href="http://www.emodnet.eu/">EMODnet</a> = European Marine Observation and Data Network</p>
+
+						<img src="images/logo_emodnet.png" height="150px"/>
+
+						<p>Long-term marine data initiative of <a href="https://ec.europa.eu/info/departments/maritime-affairs-and-fisheries_en">DG MARE</a></p>
+
+						<p><a href="https://ec.europa.eu/maritimeaffairs/policy/marine_knowledge_2020_en">Marine Knowledge</a> 2020 strategy</p>
+					</section>
+
+					<section data-background-image="images/emodnet_portals.png">
+						<h2>http://www.emodnet.eu/</h2>
+					</section>
+
+					<section data-state="emodnet-map">
+						<h2>EMODnet partners</h2>
+						<div style="text-align:left" id="emodnet-map" class="map"></div>
+					</section>
+
 				</section>
 
-			</section>
+				<section>
+					<section class="center">
+						<h1> Why should I make my data public?</h1>
+					</section>
+
+					<section class="center">
+						<img src="images/FOCUS/h2020.jpg" height="600px"/>
+					</section>
+
+					<section class="center">
+						<h3> Article 29.3 <i>"Open access to research data"</i></h3>
+						<img src="images/FOCUS/h2020_293.png" height="300px"/>
+					</section>
+
+				</section>
+
+				<section>
+					<section class="center">
+						<h1> Why not make my data public?</h1>
+					</section>
+
+					<section class="center">
+						<h1><i class="fas fa-hourglass-end"></i></h1>
+					</section>
+
+				</section>
+
+				<section>
+					<section class="center">
+						<h1> [How] does it work?</h1>
+					</section>
+
+					<section>
+						<h1> ⏰ Wake up your data</h1>
+						<iframe width="560" height="315" src="https://www.youtube.com/embed/p3vwngxyXuo?start=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+					</section>
+
+				</section>
 
 
-			<section class="center">
-				<h1> Thanks for your attention </h1>
-			</section>
+				<section class="center">
+					<h1> Thanks for your attention </h1>
+				</section>
 
 
-		</div>
-		<script src="https://cdn.knightlab.com/libs/juxtapose/latest/js/juxtapose.min.js"></script>
-		<script src="lib/js/head.min.js"></script>
-		<script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"
-		integrity="sha512-/Nsx9X4HebavoBvEBuyp3I7od5tA0UzAxs+j83KgC8PU0kgB4XiK4Lfe4y4cgBtaRJQEIFCW+oC506aPT2L1zw=="
-		crossorigin=""></script>
-		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.heat/0.2.0/leaflet-heat.js"></script>
-		<script src="js/reveal.js"></script>
-		<script src="js/maps.js"></script>
-		<script src="js/basemaps.js"></script>
-		<script type="text/javascript" src="./data/europe.geojson"></script>
-		<script>
+			</div>
+			<script src="https://cdn.knightlab.com/libs/juxtapose/latest/js/juxtapose.min.js"></script>
+			<script src="lib/js/head.min.js"></script>
+			<script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"
+			integrity="sha512-/Nsx9X4HebavoBvEBuyp3I7od5tA0UzAxs+j83KgC8PU0kgB4XiK4Lfe4y4cgBtaRJQEIFCW+oC506aPT2L1zw=="
+			crossorigin=""></script>
+			<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.heat/0.2.0/leaflet-heat.js"></script>
+			<script src="js/reveal.js"></script>
+			<script src="js/maps.js"></script>
+			<script src="js/basemaps.js"></script>
+			<script type="text/javascript" src="./data/europe.geojson"></script>
+			<script>
 
-		// Full list of configuration options available at:
-		// https://github.com/hakimel/reveal.js#configuration
-		Reveal.initialize({
-			controls: true,
-			progress: true,
-			history: true,
-			center: false,
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: false,
 
-			transition: 'slide', // none/fade/slide/convex/concave/zoom
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
 
-			// Optional reveal.js plugins
-			dependencies: [
-				{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
-				{ src: 'plugin/zoom-js/zoom.js', async: true },
-				{ src: 'plugin/notes/notes.js', async: true },
-				{ src: 'plugin/markdown/marked.js', async: true },
-				{ src: 'plugin/markdown/markdown.js', async: true },
-				{ src: 'plugin/embed-tweet/embed-tweet.js' },
-				{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
-			]
-		});
-
-		function runOnState(state, o) {
-			Reveal.addEventListener(state, function(e) {
-				var removeListener = function() {
-					o.stop();
-					Reveal.removeEventListener('slidechanged', removeListener);
-				}
-				o.start();
-				setTimeout(function() {
-					Reveal.addEventListener('slidechanged', removeListener);
-				}, 0);
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/markdown/marked.js', async: true },
+					{ src: 'plugin/markdown/markdown.js', async: true },
+					{ src: 'plugin/embed-tweet/embed-tweet.js' },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
 			});
-		}
 
-		runOnState('emodnet-map', window.emodnetMap);
-		</script>
+			function runOnState(state, o) {
+				Reveal.addEventListener(state, function(e) {
+					var removeListener = function() {
+						o.stop();
+						Reveal.removeEventListener('slidechanged', removeListener);
+					}
+					o.start();
+					setTimeout(function() {
+						Reveal.addEventListener('slidechanged', removeListener);
+					}, 0);
+				});
+			}
 
-	</body>
-	</html>
+			runOnState('emodnet-map', window.emodnetMap);
+			</script>
+
+		</body>
+		</html>
