@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8"/>
+
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>
+			EMODnet Partners
+		</title>
+		<script src ="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.3/leaflet.js"></script>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.3/leaflet.css" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.fullscreen/1.4.3/Control.FullScreen.css">
+		<style type="text/css">
+			#map { height : 800px; }
+			.info { padding: 10px 20px; font: 20px/22px Arial, Helvetica, sans-serif; background: rgba(255,255,255,0.7);
+				box-shadow: 0 0 15px rgba(0,0,0,0.4); border-radius: 7px; }
+					.info h4 { margin: 0 0 5px; color: #777; }
+			.legend { text-align: left; line-height: 18px; color: #555; }
+			.legend i { width: 18px; height: 18px; float: left; margin-right: 8px; opacity: 0.7; }
+			.hexbin-hexagon {
+				stroke: #000;
+				stroke-width: .5px;
+			}
+			.line{
+				width: 10px;
+				height: 10px;
+				color: red
+			}
+
+		</style>
+	</head>
+	<body>
+
+		<div id="map"></div>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.fullscreen/1.4.3/Control.FullScreen.min.js"></script>
+		<script type="text/javascript" src="js/basemaps.js"></script>
+		<script src="data/europe.geojson"></script>
+<script>
+
+  var map = L.map('map', {
+    fullscreenControl: true,
+	}).setView([48., 10], 5);
+
+  map.createPane('labels');
+  map.getPane('labels').style.zIndex = 650;
+  map.getPane('labels').style.pointerEvents = 'none';
+
+  var Esri_OceanBasemap = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Ocean_Basemap/MapServer/tile/{z}/{y}/{x}', {
+    attribution: 'Tiles &copy; Esri &mdash; Sources: GEBCO, NOAA, CHS, OSU, UNH, CSUMB, National Geographic, DeLorme, NAVTEQ, and Esri',
+    maxZoom: 13
+  }).addTo(map);
+
+  // control that shows state info on hover
+  var info = L.control();
+
+  info.onAdd = function (map) {
+    this._div = L.DomUtil.create('div', 'info');
+    this.update();
+    return this._div;
+  };
+
+  info.update = function (props) {
+    this._div.innerHTML = (props ?
+      '<h4>' + props.NAME + '</h4> ' + props.npartners + ' partners'
+      : '<h4> Select a country </h4>');
+  };
+
+  info.addTo(map);
+
+  var geojson;
+
+  function getColor(d) {
+    return d > 7 ? '#bd0026' :
+         d > 5  ? '#f03b20' :
+         d > 2  ? '#fd8d3c' :
+				 d > 1  ? '#fecc5c' :
+         d > 0  ? '#ffffb2' :
+				 '#E8E1E1';
+
+  }
+
+
+  function style(feature) {
+    return {
+      fillColor: getColor(feature.properties.npartners),
+      weight: .5,
+      opacity: 1,
+      color: 'black',
+      dashArray: '0',
+      fillOpacity: 0.6
+    };
+  }
+
+  function highlightFeature(e) {
+    var layer = e.target;
+
+    layer.setStyle({
+      weight: 5,
+      color: '#666',
+      dashArray: '',
+      fillOpacity: 0.2
+    });
+
+    if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+      layer.bringToFront();
+    }
+
+    info.update(layer.feature.properties);
+  }
+
+  function resetHighlight(e) {
+    geojson.resetStyle(e.target);
+    info.update();
+  }
+
+  function zoomToFeature(e) {
+    map.fitBounds(e.target.getBounds());
+  }
+
+
+  function onEachFeature(feature, layer) {
+    layer.on({
+      mouseover: highlightFeature,
+      mouseout: resetHighlight,
+      click: zoomToFeature
+    });
+  }
+
+  geojson = L.geoJson(countries, {
+    style: style,
+    onEachFeature: onEachFeature
+  }).addTo(map);
+
+
+  var legend = L.control({position: 'bottomright'});
+  legend.onAdd = function (map) {
+
+    var div = L.DomUtil.create('div', 'info legend'),
+      grades = [0, 1, 2, 5, 7],
+      labels = [],
+      from, to;
+
+    //for (var i = 0; i < grades.length; i++) {
+    for (var i = grades.length-1; i >= 0; i--) {
+      from = grades[i];
+      to = grades[i + 1];
+
+			if (to - from == 1){
+				labels.push(
+	        '<i style="background:' + getColor(from + 1) + '"></i> ' + to );
+			} else {
+      labels.push(
+        '<i style="background:' + getColor(from + 1) + '"></i> ' +
+        from + (to ? '&ndash;' + to : '+'));
+			}
+    }
+		console.log(labels)
+    div.innerHTML = labels.join('<br>');
+    return div;
+  };
+
+  legend.addTo(map);
+
+</script>
+</body>
+</html>

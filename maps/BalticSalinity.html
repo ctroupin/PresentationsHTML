@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8"/>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>
+		Salinity interpolation in the Baltic Sea
+	</title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.4.0/leaflet.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.4.0/leaflet.css"/>
+	<style type="text/css">
+	#map { height : 900px; width : 1800px}
+	.legend { background : white; line-height : 2em}
+	.legend i { width : 5em; float : left}
+	.textlabel { border: 2px solid black; font-size: 24px }
+	.legend {
+		line-height: 18px;
+		color: #555;
+	}
+	.legend i {
+		width: 18px;
+		height: 18px;
+		float: left;
+		margin-right: 8px;
+		opacity: 0.7;
+	}
+
+}
+</style>
+</head>
+<body>
+
+	<div id="map"></div>
+	<script type="text/javascript" src='../data/Baltic-Salinity/finegrid.json'></script>
+	<script type="text/javascript" src='../data/Baltic-Salinity/contours/contour_10006.json'></script>
+	<script type="text/javascript" src='../data/Baltic-Salinity/contours/contour_10001.json'></script>
+	<script type="text/javascript" src='../data/Baltic-Salinity/data/Salinity_19502019_0406_10001'></script>
+	<script type="text/javascript" src='../data/Baltic-Salinity/fields/Salinity_19502019_0406_10001_anl.json'></script>
+	<script type="text/javascript" src='../data/Baltic-Salinity/fields/sensitivity/Salinity.19502019.0406.10001.anl_01.json'></script>
+	<script type="text/javascript" src='../data/Baltic-Salinity/fields/sensitivity/Salinity.19502019.0406.10001.anl_02.json'></script>
+	<script type="text/javascript" src='../data/Baltic-Salinity/fields/sensitivity/Salinity.19502019.0406.10001.anl_03.json'></script>
+	<script>
+
+	var map = L.map('map')
+
+	var CartoDB = L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png', {
+		maxZoom: 18,
+		attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, &copy; <a href="https://carto.com/attribution">CARTO</a>'
+	});
+
+	var OpenTopoMap = L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
+		maxZoom: 17,
+		attribution: 'Map data: &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
+	});
+
+	map.addLayer(CartoDB);
+
+	var baseMaps = {
+		"CartoDB": CartoDB,
+		"OpenTopoMap": OpenTopoMap
+	};
+
+	var dataStyle = {
+		radius: 1,
+		fillColor: 'red',
+		weight: 1,
+		opacity: 1,
+		color: 'black',
+		fillOpacity: 0.7
+	}
+
+	var contourStyle = {
+		weight: 3,
+		opacity: 1,
+		color : 'black',
+		fillOpacity: 0.
+	}
+
+	function getFieldColor(d) {
+		return d > 15  ? 	'#A50026' :
+		d > 10  ? '#D62F26' :
+		d > 9  ? '#F46D43' :
+		d > 8  ? '#FCAC60' :
+		d > 7  ? '#FEE090' :
+		d > 6  ? '#FEFEBE' :
+		d > 5  ? '#E0F3F8' :
+		d > 4  ? '#A9D8E8' :
+		d > 3  ? '#74ADD1' :
+		d > 2  ? '#4473B3' :
+		'#313695' ;
+	}
+
+	function fieldStyle(feature) {
+		return {
+			radius: 5,
+			fillColor: getFieldColor(feature.properties.field),
+			color: 'k',
+			weight: 2,
+			opacity: 0.9,
+			fillOpacity: 0.8
+		};
+	}
+
+	latlon = [];
+
+	var domain = [[53, 8.],[66., 8.],[66., 30.],[53., 30.]];
+	var polygon = L.polygon(domain, {color: '#0B8E40', fillOpacity: 0.04});
+
+	var bathymetry = L.tileLayer.wms('http://ows.emodnet-bathymetry.eu/wms', {
+		layers: 'emodnet:mean_atlas_land,coastlines,world:sea_names'
+	});
+
+	// Create a canvas to manage a lot of points
+	var myRenderer = L.canvas({ padding: 0.5 });
+	var datascatter = L.layerGroup();
+
+	for (var i = 0; i < datapoints.length; i += 1) {
+		var pointcolor = getFieldColor(datapoints[i]["vmin"]);
+		for (var j = 0; j < datapoints[i]["coords"].length; j += 1) {
+			var circ = L.circleMarker(datapoints[i]["coords"][j], {
+				renderer: myRenderer,
+				radius: 1,
+				fillOpacity: 1,
+				color: pointcolor
+			});
+			datascatter.addLayer(circ);
+		}
+	}
+
+	// var heatmap = L.heatLayer(datapoints, heatStyle);
+	var divacontours_surf = new L.GeoJSON(contours_10006, {style: contourStyle});
+	var divacontours_deep = new L.GeoJSON(contours_10001, {style: contourStyle});
+	var divafield = new L.GeoJSON(results_Salinity_19502019_0406, {style: fieldStyle});
+
+	var divafield_01 = new L.GeoJSON(results_1, {style: fieldStyle});
+	var divafield_02 = new L.GeoJSON(results_2, {style: fieldStyle});
+	var divafield_03 = new L.GeoJSON(results_3, {style: fieldStyle});
+
+	imageBounds = [[53., 8.], [66., 30.]];
+	var imageMask0 = '../images/SDC_TTG/mask_0.png'
+	var imageMask30 = '../images/SDC_TTG/mask_30.png'
+	var imageMaskEdit30 = '../images/SDC_TTG/mask_edit_30.png'
+	var mask0 = L.imageOverlay(imageMask0, imageBounds);
+	var mask30 = L.imageOverlay(imageMask30, imageBounds);
+	var maskEdit30 = L.imageOverlay(imageMaskEdit30, imageBounds);
+
+	var imageField = '../images/SDC_TTG/Salinity_19502019_0709_10001_anl_01.png'
+	var field30m = L.imageOverlay(imageField, imageBounds);
+
+	var finegridStyle = {
+		"color": "#F43C3C",
+		"weight": 0.5,
+		"opacity": 0.5
+	};
+
+	var grid1 = L.geoJSON(finegrid, {
+		style: finegridStyle
+	}).addTo(map);
+
+	var overlayers = {
+		"Domain": polygon,
+		"Data points": datascatter,
+		"Bathymetry (EMODnet)": bathymetry,
+		"Contours at surface": divacontours_surf,
+		"Contours at 30 meters": divacontours_deep,
+		"Mask at surface": mask0,
+		"Mask at 30 meters": mask30,
+		"Edited mask at 30 meters": maskEdit30,
+		// 	"Heat map": heatmap,
+		// 	"Coarse grid": coarsegrid,
+		// 	"Fine grid": finegrid,
+		"Interpolated field 1": divafield_01,
+		"Interpolated field 2": divafield_02,
+		"Interpolated field 3": divafield_03,
+	};
+
+	var legend = L.control({position: 'bottomright'});
+
+	legend.onAdd = function (map) {
+
+		var div = L.DomUtil.create('div', 'info legend'),
+		grades = [0, 2, 3, 4, 5, 6, 7, 8, 9, 10, 15],
+		labels = ["Relative increase<br>in number of properties"],
+		from, to;
+		// loop through our density intervals and generate a label with a colored square for each interval
+		for (var i = 0; i < grades.length; i++) {
+			div.innerHTML +=
+			'<i style="background:' + getFieldColor(grades[i] + 1) + '"></i> ' +
+			grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
+		}
+
+		return div;
+	};
+
+	legend.addTo(map);
+
+	map.setView([60., 19.], 5);
+	L.control.scale().addTo(map);
+
+	L.control.layers(baseMaps, overlayers,
+		{autoZIndex:true, collapsed:true}).addTo(map);
+
+
+		</script>
+	</body>
+	</html>
