@@ -69,9 +69,11 @@ body {
   font-size: 3.77em; }
 
 .reveal h2 {
+	color: #7E7E7E;
   font-size: 2.11em; }
 
 .reveal h3 {
+	color: #7E7E7E;
   font-size: 1.55em; }
 
 .reveal h4 {
@@ -114,6 +116,26 @@ body {
 
 .reveal ul {
   list-style-type: disc; }
+
+	.reveal	ol li {
+	  counter-increment: list;
+	  list-style-type: none;
+	  position: relative;
+	}
+
+	/* Output the numbers using the counter() function, but use a custom color, and position the numbers how we want */
+	.reveal ol li:before {
+	  color: #0979B8;
+	  content: counter(list) "-";
+	  left: -32px;
+	  position: absolute;
+	  text-align: right;
+	  width: 26px;
+	}
+
+	.reveal li {
+	  line-height: 1.25;
+	}
 
 .reveal ul ul {
   list-style-type: square; }
