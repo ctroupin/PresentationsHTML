@@ -131,11 +131,6 @@
 	// var heatmap = L.heatLayer(datapoints, heatStyle);
 	var divacontours_surf = new L.GeoJSON(contours_10006, {style: contourStyle});
 	var divacontours_deep = new L.GeoJSON(contours_10001, {style: contourStyle});
-	var divafield = new L.GeoJSON(results_Salinity_19502019_0406, {style: fieldStyle});
-
-	var divafield_01 = new L.GeoJSON(results_1, {style: fieldStyle});
-	var divafield_02 = new L.GeoJSON(results_2, {style: fieldStyle});
-	var divafield_03 = new L.GeoJSON(results_3, {style: fieldStyle});
 
 	imageBounds = [[53., 8.], [66., 30.]];
 	var imageMask0 = '../images/SDC_TTG/mask_0.png'
@@ -156,11 +151,12 @@
 
 	var grid1 = L.geoJSON(finegrid, {
 		style: finegridStyle
-	}).addTo(map);
+	});
 
 	var overlayers = {
 		"Domain": polygon,
 		"Data points": datascatter,
+		"Interpolation grid": grid1,
 		"Bathymetry (EMODnet)": bathymetry,
 		"Contours at surface": divacontours_surf,
 		"Contours at 30 meters": divacontours_deep,
@@ -170,9 +166,7 @@
 		// 	"Heat map": heatmap,
 		// 	"Coarse grid": coarsegrid,
 		// 	"Fine grid": finegrid,
-		"Interpolated field 1": divafield_01,
-		"Interpolated field 2": divafield_02,
-		"Interpolated field 3": divafield_03,
+		"Interpolated field at 30 m": field30m
 	};
 
 	var legend = L.control({position: 'bottomright'});
