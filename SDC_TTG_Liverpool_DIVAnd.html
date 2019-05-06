@@ -16,6 +16,7 @@
 	integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
 	crossorigin=""/>
 	<link rel="stylesheet" href="css/theme/sharlo.css" id="theme">
+	<link rel="stylesheet" href="lib/css/monokai.css">
 	<link rel="stylesheet" href="css/pres.css">
 	<link rel="stylesheet" href="css/academicons.css">
 	<link rel="stylesheet" href="lib/css/leaflet-reveal.css">
@@ -100,15 +101,18 @@
 						</section>
 
 						<section>
-							<h2>Deployment using Docker Container</h2>
-							Management/orchestration using <a href="https://kubernetes.io">Kubernetes</a>
-						</section>
+							<h2>Deployment in the VRE</h2>
 
-						<section>
-							<h2>DIVAnd API</h2>
-							<img src="images/SDC_TTG/divaAPI_fileselector.png" width="60%"/>
+							<ul>
+							<li><a href="https://jupyter.org/hub">Jupyter-hub</a> to manage multiple users</li>
+							<li><a href="https://www.docker.com/">Docker</a> container for the deployment</li>
+							<li>Management/orchestration using <a href="https://kubernetes.io">Kubernetes</a></li>
+						</ul>
+						<br>
+							<img src="images/SDC_TTG/hub_logo.png" height="150px"/>
+							<img src="images/SDC_TTG/docker_logo.png" height="150px"/>
+							<img src="images/SDC_TTG/kubernetes_logo.jpg" height="150px"/>
 						</section>
-
 
 					</section>
 
@@ -131,31 +135,61 @@
 
 						<section style="text-align: left;">
 							<h2>Current status of the component?</h2>
-							<p> <i class="fas fa-battery-full"></i> DIVAnd running it isolation</p>
-							<p> <i class="fas fa-battery-quarter"></i> DIVAnd integrated with other VRE components: 20%<br>
+							<p> <i class="fas fa-battery-full"></i> DIVAnd running in isolation</p>
+							<p> <i class="fas fa-battery-full"></i> DIVAnd Jupter-hub container</p>
+							<p> <i class="fas fa-battery-full"></i> DIVAnd API and file selector</p>
+							<p> <i class="fas fa-battery-quarter"></i> Integration with other VRE components: 20%<br>
 								(difficult to estimate)</p>
-						</section>
+							</section>
 
-						<section style="text-align: left;">
-							<h2>Open issues</h2>
-							<ol>
-								<li> Passing user-credentials (B2DROP username, password, WebDAV URL) to the container</li>
-								<li> Single-sign-on approach to access the individual services<br> (now hard-coded)</li>
-								<li> B2DROP handling ~20 users downloading/uploading a file? <br>
-									"<i>B2DROP is not for development and testing</i>"</li>
-								<li> Implementing the WebDAV put and get requests in the container</li>
-								<li> Updating the file selector for the GUI interface of DIVAnd</li>
-								<li> Testing that the VRE dash-board can start containers</li>
-							</ol>
-						</section>
+							<section style="text-align: left;">
+								<h2>Open issues</h2>
+								<ol>
+									<li> Passing user-credentials (B2DROP username, password, WebDAV URL) to the container</li>
+									<li> Single-sign-on approach to access the individual services<br> (now hard-coded)</li>
+									<li> B2DROP handling ~20 users downloading/uploading a file? <br>
+										"<i>B2DROP is not for development and testing</i>"</li>
+										<li> Implementing the WebDAV put and get requests in the container</li>
+										<li> Updating the file selector for the GUI interface of DIVAnd</li>
+										<li> Testing that the VRE dashboard can start containers</li>
+									</ol>
+								</section>
 
 								<section style="text-align: left;">
 									<h2>Open issues: how to tackle?</h2>
 									<p> WebDAV put and get requests<br> → Alex </p>
 									<p>File selector for the GUI interface of DIVAnd <br> → in collaboration with Sebastian</li>
 									</p>
-									<p>Others: dependent on EUDAT for the integration</p>
+									<p><b>Others:</b> dependent on EUDAT for the integration</p>
 								</section>
+
+								<section>
+									<h2>DIVAnd API and file selector</h2>
+									<img src="images/SDC_TTG/divaAPI_fileselector.png" width="60%"/>
+								</section>
+
+								<section>
+									<h2>File upload/download using WebDAV</h2>
+
+									<p style="text-align: left;">Configure WebDAV environment variables</p>
+									<pre class="julia"><code data-trim data-noescape>
+										ENV["WEBDAV_USERNAME"] = "app-username"
+										ENV["WEBDAV_PASSWORD"] = "app-password"
+										ENV["WEBDAV_URL"] = "https://b2drop.eudat.eu/remote.php/webdav"
+									</code></pre>
+
+									<p style="text-align: left;">Download the file to the selected folder</p>
+									<pre class="julia"><code data-trim data-noescape>
+										get("Adriatic/AdriaticSea_SDC.txt", "Adriatic/AdriaticSea_SDC.txt")
+									</code></pre>
+								</section>
+
+									<section>
+										<h2>Demo</h2>
+
+										<a href="https://diva.seadatacloud.ml/1234/tree">https://diva.seadatacloud.ml/1234/tree</a>
+
+									</section>
 
 							</section>
 
