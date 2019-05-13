@@ -19,6 +19,7 @@
 	<link rel="stylesheet" href="css/pres.css">
 	<link rel="stylesheet" href="css/academicons.css">
 	<link rel="stylesheet" href="lib/css/leaflet-reveal.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.fullscreen/1.4.5/Control.FullScreen.css">
 
 	<style type="text/css">
 		.info { padding: 20px 20px; font: 20px/22px Arial, Helvetica, sans-serif; background: rgba(255,255,255,0.7);
@@ -107,6 +108,10 @@
 					<div style="text-align:left" id="emodnet-bio-map" class="map"></div>
 				</section>
 
+				<section class="center" data-background-image="images/EMODnet-Bio/divand-github.png">
+					<a href="https://github.com/gher-ulg/DIVAnd.jl/">https://github.com/gher-ulg/DIVAnd.jl/</a>
+				</section>
+
 			</section>
 
 			<section>
@@ -115,7 +120,7 @@
 					<h1>2. Example of products</h1>
 				</section>
 
-			  <section class="center">
+			  <section class="center" data-background-image="images/EMODnet-Bio/backgrounbenthos_2.png">
 					<h2>
 				  Benthic macroinvertebrate<br> living modes<br> in European seas
 					<h2>
@@ -123,9 +128,9 @@
 
 				<section>
 					<h2>Data sources</h2>
-					<p>Available from EMODnet Biology (see list on the web)</p>
-
-  				<p>3 main living modes</p>
+					<p style="text-align:left">Available from EMODnet Biology (see list on the web)</p>
+					<p style="text-align:left">3 main living modes</p>
+					<img src="images/EMODnet-Bio/databenthos.png" width="45%">
 				</section>
 
 				<section>
@@ -146,7 +151,7 @@
 					<br>
 						<ol>
 						<li>Relatively short life span</li>
-						<li>Species which are not very habitat-specific</li>
+						<li>Not very habitat-specific</li>
 					</ol>
 				</section>
 
@@ -161,20 +166,94 @@
 						</ol>
 				</section>
 
-				Code and methodology
+				<section>
+					<h3>Data location</h3>
+				<img src="images/EMODnet-Bio/Benthos_Total_densities_ab_data.png"/>
+			  </section>
 
-https://github.com/EMODnet/EMODnet-Biology-fish-benthos-traits
+				<section>
+					<h3>Interpolated fields (relative)</h3>
+				<img src="images/EMODnet-Bio/Benthos_Total_densities_ab.png"/>
+			  </section>
 
-Products available for download
+				<section>
+					<h3>Error fields</h3>
+				<img src="images/EMODnet-Bio/Benthos_Total_densities_ab_error.png"/>
+			  </section>
 
-https://dox.ulg.ac.be/index.php/s/EvIwSvTwhtJ6Tmu
 
+				<section class="center">
+					<h2>Neural network modelling<br> of Baltic zooplankton abundances</h2>
+				</section>
+
+
+				<section>
+					<h3>Method: neural network</h3>
+					<p style="text-align:left">Using <i>co-variables</i> to help for the interpolation</p>
+
+					<p style="text-align:left">Main datasets: Zooplankton observations in the Baltic</p>
+					<ol>
+				  <li> the Swedish <a href="http://www.emodnet-biology.eu/data-catalog?module=dataset&dasid=2452">SHARK database</a> from EMODnet Biology</li>
+					<li> the Finnish data from the <a href="http://www.emodnet-biology.eu/data-catalog?module=dataset&dasid=5726">NOAA Copepod database</a> </li>
+					<li> the German and Polish from the <a href="http://www.emodnet-biology.eu/data-catalog?module=dataset&dasid=4431">HELCOM DOME database</a></li>
+					</ol>
+				</section>
+
+				<section>
+				<h3>Co-variables</h3>
+				<ol><li><a href="http://www.emodnet-chemistry.eu/products/catalogue#/metadata/087a72c0-c243-11e8-bac2-5ce0c5469bc7">Dissolved oxygen</a> (from EMODnet Chemistry)</li>
+					<li><a href="https://www.seadatanet.org/Products#/metadata/bf35a7c5-c843-4a23-8040-07ddcf3d8e71">Salinity</a> (from SeaDataNet)</li>
+					<li><a href="https://www.seadatanet.org/Products#/metadata/bf35a7c5-c843-4a23-8040-07ddcf3d8e71">Temperature</a> (from SeaDataNet)</li>
+					<li><a href="https://oceancolor.gsfc.nasa.gov/l3/">Chlorophyll concentration</a> (MODIS-Aqua from NASA)</li>
+					<li><a href="https://www.gebco.net/">Bathymetry</a> (from GEBCO)</li>
+					<li><a href="https://gcmd.nasa.gov/KeywordSearch/Metadata.do?Portal=idn_ceos&amp;KeywordPath=%5BData_Center%3A+Short_Name%3D%27PacIOOS%27%5D&amp;OrigMetadataNode=GCMD&amp;EntryId=dist2coast_1deg&amp;MetadataView=Full&amp;MetadataType=0&amp;lbnode=mdlb1">Distance from coast </a>(from GSFC, NASA)</li>
+				</ol>
+			</section>
+
+			<section class="center" data-transition="fade-in slide-out">
+			<h3>Examples of fields</h3>
+		  <img src="images/EMODnet-Bio/Keratella cochlearis-2007.png">
+			</section>
+			<section class="center" data-transition="sfade-in slide-out">
+			<h3>Examples of fields</h3>
+			<img src="images/EMODnet-Bio/Keratella cochlearis-2008.png">
+		  </section>
+			<section class="center" data-transition="sfade-in slide-out">
+			<h3>Examples of fields</h3>
+			<img src="images/EMODnet-Bio/Keratella cochlearis-2009.png">
+		  </section>
+			<section class="center" data-transition="sfade-in slide-out">
+			<h3>Examples of fields</h3>
+			<img src="images/EMODnet-Bio/Keratella cochlearis-2010.png">
+		  </section>
+
+			</section>
+
+
+			<section>
+
+				<section class="center", data-background="images/EMODnet-Bio/parenthesis.jpg">
+					<p style="font-size:70px">3.</p><br>
+					<p style="font-size:50px" class="fragment"><b>F</b>indability</p>
+					<p style="font-size:50px" class="fragment"><b>A</b>ccessibility</p>
+					<p style="font-size:50px" class="fragment"><b>I</b>nteroperability</p>
+					<p style="font-size:50px" class="fragment"><b>R</b>eusability</p>
+				</section>
+
+				<section>
+					<h2>Towards reproducibility</h2>
+					<p style="text-align:left" class="fragment grow"><i class="fas fa-check"></i> Data <i class="fas fa-arrow-right"></i> <a href="http://www.emodnet-biology.eu">EMODnet Biology</a></p>
+					<p style="text-align:left" class="fragment grow"><i class="fas fa-check"></i> Tool <i class="fas fa-arrow-right"></i> DIVAnd v2.1.1: <a href="http://doi.org/10.5281/zenodo.1407912">http://doi.org/10.5281/zenodo.1407912</a> </p>
+					<p style="text-align:left" class="fragment grow"><i class="fas fa-check"></i> Code and procedure <i class="fas fa-arrow-right"></i> Jupyter-notebooks: <a href="https://github.com/EMODnet/EMODnet-Biology-fish-benthos-traits"><i class="fab fa-github"></i></a></p>
+					<p style="text-align:left" class="fragment grow"><i class="fas fa-check"></i> Products available for download <i class="fas fa-arrow-right"></i> netCDF files:<br> <a href="https://dox.ulg.ac.be/index.php/s/EvIwSvTwhtJ6Tmu">https://dox.ulg.ac.be/index.php/s/EvIwSvTwhtJ6Tmu</a></p>
+
+				</section>
 			</section>
 
 			<section>
 
-			<section class="center" data-background="EMODnet-Bio/Lisboa2015_9054.jpg">
-				<h1> Thanks for your attention </h1>
+			<section class="center" data-background="images/EMODnet-Bio/Lisboa2015_9054.jpg">
+				<h1 style="color:white;"> Thanks for<br> your attention </h1>
 			</section>
 
 			</section>
@@ -194,6 +273,7 @@ https://dox.ulg.ac.be/index.php/s/EvIwSvTwhtJ6Tmu
 		<script type="text/javascript" src="./data/EMODnet-bio/benthos-g1.js"></script>
 		<script type="text/javascript" src="./data/EMODnet-bio/benthos-g2.js"></script>
 		<script type="text/javascript" src="./data/EMODnet-bio/benthos-g3.js"></script>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.fullscreen/1.4.5/Control.FullScreen.js"></script>
 		<script>
 
 		// Full list of configuration options available at:

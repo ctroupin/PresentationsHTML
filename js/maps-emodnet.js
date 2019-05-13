@@ -26,7 +26,7 @@ window.emodnetBioMap = (function() {
 
 	return {
 		start: function() {
-			var map = L.map('emodnet-bio-map')
+			var map = L.map('emodnet-bio-map', {fullscreenControl: true})
 
 			CartoDB.addTo(map);
 
