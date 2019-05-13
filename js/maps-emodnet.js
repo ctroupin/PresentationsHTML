@@ -97,9 +97,12 @@ window.emodnetBioMap = (function() {
 				"opacity": 0.5
 			};
 
+			var domain = [[36, -10.],[75., -10.],[75., 35.],[36., 35.]];
+			var polygon = L.polygon(domain, {color: '#0B8E40', fillOpacity: 0.04});
+
 			var grid1 = L.geoJSON(coarsegrid, {
 				style: gridStyle
-			}).addTo(map);
+			});
 
 			var grid2 = L.geoJSON(finegrid, {
 				style: finegridStyle
@@ -112,10 +115,19 @@ window.emodnetBioMap = (function() {
 
 			var coarseMaskImg = 'images/EMODnet-Bio/coarsemask.png';
 			imageBounds = [[36., -10.], [75., 35.]];
+			imageBoundsFields = [[36., -10.], [73., 35.]];
 			var coarseMask = L.imageOverlay(coarseMaskImg, imageBounds, {"opacity": 0.8, pane: "pane800"});
 
 			var fineMaskImg = 'images/EMODnet-Bio/finemask.png';
 			var fineMask = L.imageOverlay(fineMaskImg, imageBounds, {"opacity": 0.8, pane: "pane800"});
+
+			var benthosG1img = 'images/EMODnet-Bio/benthos_g1.png';
+			var benthosG1 = L.imageOverlay(benthosG1img, imageBoundsFields, {"opacity": 0.9, pane: "pane800"});
+			var benthosG2img = 'images/EMODnet-Bio/benthos_g2.png';
+			var benthosG2 = L.imageOverlay(benthosG2img, imageBoundsFields, {"opacity": 0.9, pane: "pane800"});
+			var benthosG3img = 'images/EMODnet-Bio/benthos_g3.png';
+			var benthosG3 = L.imageOverlay(benthosG3img, imageBoundsFields, {"opacity": 0.9, pane: "pane800"});
+
 
 			// Create a canvas to manage a lot of points
 
@@ -178,6 +190,7 @@ window.emodnetBioMap = (function() {
 			legend.addTo(map);
 
 			var overlayers = {
+				"Domain": polygon,
 				"Coarse grid": grid1,
 				"Fine grid": grid2,
 				"Bathymetry": bathymetry,
@@ -186,6 +199,9 @@ window.emodnetBioMap = (function() {
 				"g1 (resistant)": datascatter1,
 				"g2 (resilient)": datascatter2,
 				"g3 (vulnerable)": datascatter3,
+				"Interpolated g1 (relative)": benthosG1,
+				"Interpolated g2 (relative)": benthosG2,
+				"Interpolated g3 (relative)": benthosG3,
 			};
 
 			map.setView([60.,15], 3);
