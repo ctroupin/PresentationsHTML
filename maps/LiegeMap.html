@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8"/>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>
+		GHER - Liège
+	</title>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.4.0/leaflet.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.heat/0.2.0/leaflet-heat.js"></script>
+	<script src="../js/basemaps.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.4.0/leaflet.css"/>
+	<link type="text/css" rel="stylesheet" href="../css/mapstyle.css"/>
+</head>
+<body>
+
+	<h2>Where to find us?</h2>
+
+	<div id="map"></div>
+	<script>
+
+	var map = L.map('map')
+
+  map.addLayer(CartoDB);
+	map.setView([47., 5.], 6);
+
+	// Some markers for the main points of interest
+	var staresoIcon = L.icon({
+		iconUrl: '../images/Phidias/stareso_icon.png',
+		iconSize: [60, 40], iconAnchor: [20, 20], popupAnchor:  [-10, -10]
+	});
+
+	var uliegeIcon = L.icon({
+		iconUrl: '../images/Phidias/logo_uliege.png',
+		iconSize: [80, 40], iconAnchor: [20, 20], popupAnchor:  [-10, -10]
+	});
+
+	var Liege = [50.5825, 5.5662];
+	var Ostende = [51.228305, 2.894684];
+	var marker = L.marker(Liege).addTo(map);
+  var marker = L.marker(Liege, {icon: uliegeIcon}).addTo(map);
+	var marker = L.marker([42.580430, 8.724207]).addTo(map);
+	var marker = L.marker([42.580430, 8.724207], {icon: staresoIcon}).addTo(map);
+	var marker = L.marker([43.636176, 3.841911]).addTo(map);
+
+
+	var polyline = L.polyline([Liege, Ostende], {color: 'red'}).addTo(map);
+
+	L.control.scale().addTo(map);
+
+	//L.control.layers(baseMaps, null,
+	//	{autoZIndex:true, collapsed:false}).addTo(map);
+
+
+		</script>
+	</body>
+	</html>

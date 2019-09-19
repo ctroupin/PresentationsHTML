@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8"/>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>
+		Data interpolation
+	</title>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.4.0/leaflet.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.heat/0.2.0/leaflet-heat.js"></script>
+	<script src="../js/basemaps.js"></script>
+	<script src="../js/heatmap.js"></script>
+	<script src="../js/leaflet-heatmap.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.4.0/leaflet.css"/>
+	<link type="text/css" rel="stylesheet" href="../css/mapstyle.css"/>
+</style>
+</head>
+<body>
+
+	<h2>Interpolation of huge amount of data</h2>
+
+	<div id="map"></div>
+	<script type="text/javascript" src='../data/Secchi/myfile2.txt'></script>
+	<script>
+
+	var map = L.map('map')
+
+	map.addLayer(Esri_OceanBasemap);
+	map.setView([5., 0.], 3);
+
+	var imageUrl3 = '../images/Phidias/secchi_depth03.png',
+     imageBounds3 = [[-85.0, -180.0], [85.0, 180.0]];
+  var field = L.imageOverlay(imageUrl3, imageBounds3, {opacity: 0.8});
+
+	var bathymetry = L.tileLayer.wms('http://ows.emodnet-bathymetry.eu/wms', {
+		layers: 'emodnet:coastlines'
+	}).addTo(map);
+
+	var testData = {
+	  max: 50,
+	  data: heatdata
+	};
+
+	var cfg = {
+	  // radius should be small ONLY if scaleRadius is true (or small radius is intended)
+	  // if scaleRadius is false it will be the constant radius used in pixels
+	  "radius": 0.5,
+	  "maxOpacity": .8,
+	  // scales the radius based on map zoom
+	  "scaleRadius": true,
+	  // if set to false the heatmap uses the global maximum for colorization
+	  // if activated: uses the data maximum within the current map boundaries
+	  //   (there will always be a red spot with useLocalExtremas true)
+	  "useLocalExtrema": true,
+	  // which field name in your data represents the latitude - default "lat"
+	  latField: 'lat',
+	  // which field name in your data represents the longitude - default "lng"
+	  lngField: 'lng',
+	  // which field name in your data represents the data value - default "value"
+	  valueField: 'count'
+	};
+
+	var heatmapLayer = new HeatmapOverlay(cfg);
+	heatmapLayer.setData(testData);
+	//heatmapLayer.addTo(map);
+
+	L.control.scale().addTo(map);
+
+	var overlayers = {
+		"Data positions": heatmapLayer,
+		"Interpolated field": field
+	};
+
+
+	L.control.layers(null, overlayers,
+		{autoZIndex:true, collapsed:false}).addTo(map);
+
+
+		</script>
+	</body>
+	</html>
