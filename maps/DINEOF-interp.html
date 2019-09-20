@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8"/>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>
+		DINEOF reconstruction
+	</title>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.4.0/leaflet.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.heat/0.2.0/leaflet-heat.js"></script>
+	<script src="../js/basemaps.js"></script>
+	<script src="../js/heatmap.js"></script>
+	<script src="../js/leaflet-heatmap.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.4.0/leaflet.css"/>
+	<link type="text/css" rel="stylesheet" href="../css/mapstyle.css"/>
+</style>
+</head>
+<body>
+
+	<h2>Reconstruction of Suspended Particular Matter (SPM)</h2>
+
+	<div id="map"></div>
+	<script type="text/javascript" src='../data/Secchi/myfile2.txt'></script>
+	<script>
+
+	var map = L.map('map')
+
+	map.setView([51.5, 2.75], 9);
+
+	var imageUrl3 = '../images/Phidias/sentinel3_data_2017-03-30T10-16-15.png',
+     imageBounds3 = [[51.0, 2.0], [52., 3.496]];
+  var field1 = L.imageOverlay(imageUrl3, imageBounds3, {opacity: 1});
+
+	var imageUrl3 = '../images/Phidias/sentinel3_dineof_2017-03-30T10-16-15.png',
+     imageBounds3 = [[51.0, 2.0], [52., 3.496]];
+  var field2 = L.imageOverlay(imageUrl3, imageBounds3, {opacity: 1});
+
+	var bathymetry = L.tileLayer.wms('http://ows.emodnet-bathymetry.eu/wms', {
+		layers: 'emodnet:mean_atlas_land,coastlines,world:sea_names'
+	}).addTo(map);
+
+	var videourl = '../images/Phidias/output.webm',
+    videoBounds = [[51.0, 2.0], [52., 3.496]];
+	var anim = L.videoOverlay(videourl, videoBounds).addTo(map);
+
+	L.control.scale().addTo(map);
+
+	var overlayers = {
+		"Initial image": field1,
+		"Reconstructed image": field2,
+		"Time series": anim
+	};
+
+	L.control.layers(null, overlayers,
+		{autoZIndex:true, collapsed:false}).addTo(map);
+
+
+		</script>
+	</body>
+	</html>
