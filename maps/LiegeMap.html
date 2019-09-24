@@ -24,7 +24,7 @@
 	var map = L.map('map')
 
   map.addLayer(CartoDB);
-	map.setView([47., 5.], 6);
+	map.setView([52.5, 5.], 5);
 
 	// Some markers for the main points of interest
 	var staresoIcon = L.icon({
@@ -37,16 +37,39 @@
 		iconSize: [80, 40], iconAnchor: [20, 20], popupAnchor:  [-10, -10]
 	});
 
-	var Liege = [50.5825, 5.5662];
+	var Liege = [];
 	var Ostende = [51.228305, 2.894684];
-	var marker = L.marker(Liege).addTo(map);
-  var marker = L.marker(Liege, {icon: uliegeIcon}).addTo(map);
+
+	var partners = {"CERFACS": [43.575881, 1.374832],
+									"CSC": [60.178111, 24.832867],
+									"SYKE": [60.229655, 25.019738],
+									"Trust IT": [43.711296, 10.393900],
+									"ULiege": [50.5825, 5.5662],
+									"SPASCIA": [43.551192, 1.487914],
+									"NEOVIA": [48.870565, 2.308058],
+									"MARIS": [52.075033, 4.360318],
+									"IFremer": [48.359124, -4.558790],
+									"Geomatys": [43.672042, 4.634111],
+									"IRD": [43.309550, 5.368774],
+								}
+
+
+
+	for (var key in partners) {
+    // check if the property/key is defined in the object itself, not in parent
+    if (partners.hasOwnProperty(key)) {
+        console.log(key, partners[key][0], partners[key][1]);
+				var marker = L.marker(partners[key]).addTo(map);
+    }
+	};
+
+  var marker = L.marker(partners["ULiege"], {icon: uliegeIcon}).addTo(map);
 	var marker = L.marker([42.580430, 8.724207]).addTo(map);
 	var marker = L.marker([42.580430, 8.724207], {icon: staresoIcon}).addTo(map);
 	var marker = L.marker([43.636176, 3.841911]).addTo(map);
 
 
-	var polyline = L.polyline([Liege, Ostende], {color: 'red'}).addTo(map);
+	var polyline = L.polyline([partners["ULiege"], Ostende], {color: 'red'}).addTo(map);
 
 	L.control.scale().addTo(map);
 
