@@ -34,7 +34,7 @@
      imageBounds3 = [[-85.0, -180.0], [85.0, 180.0]];
   var field = L.imageOverlay(imageUrl3, imageBounds3, {opacity: 0.8});
 
-	var bathymetry = L.tileLayer.wms('http://ows.emodnet-bathymetry.eu/wms', {
+	var bathymetry = L.tileLayer.wms('https://ows.emodnet-bathymetry.eu/wms', {
 		layers: 'emodnet:coastlines'
 	}).addTo(map);
 
