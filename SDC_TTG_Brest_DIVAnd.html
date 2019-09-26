@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+
+	<title>Online DIVAnd</title>
+
+	<meta name="description" content="Spatial data interpolation">
+	<meta name="author" content="Charles Troupin">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+	<link rel="stylesheet" href="css/reveal.css">
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css"
+	integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
+	crossorigin=""/>
+	<link rel="stylesheet" href="css/theme/sharlo.css" id="theme">
+	<link rel="stylesheet" href="lib/css/monokai.css">
+	<link rel="stylesheet" href="css/pres.css">
+	<link rel="stylesheet" href="css/academicons.css">
+	<link rel="stylesheet" href="lib/css/leaflet-reveal.css">
+
+	<style type="text/css">
+	.info { padding: 20px 20px; font: 20px/22px Arial, Helvetica, sans-serif; background: rgba(255,255,255,0.7);
+		box-shadow: 0 0 15px rgba(0,0,0,0.4); border-radius: 7px; }
+		.info h4 { margin: 0 0 5px; color: #777; font: 20px/22px Arial, Helvetica, sans-serif;}
+		.legend { text-align: left; line-height: 18px; color: #555; font: 20px/22px Arial, Helvetica, sans-serif;}
+		.legend i { width: 18px; height: 18px; float: left; margin-right: 8px; opacity: 0.7; }
+		.line{
+			width: 10px;
+			height: 10px;
+			color: red
+		}
+
+		</style>
+
+		<!-- Printing and PDF exports -->
+		<script>
+		var link = document.createElement( 'link' );
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+		document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<div class="slides">
+				<section>
+					<section class="center">
+						<h1>Online DIVAnd</h1>
+						<h2>Recent progress & hurdles</h2>
+
+						<p>
+							<img src="images/logo_gher.png" height="75px"/>
+							<img src="images/logo_uliege.jpeg" height="75px"/>
+							<img src="images/logo_emodnet.png" height="75px"/>
+							<img src="images/logo_seadatacloud.png" height="75px"/></p>
+						</section>
+
+						<section class="center" style="text-align: left;">
+							<h2>A work by</h2>
+							<p>Alexander <font style="font-variant: small-caps">Barth</font> (code development and data interpolation)</p>
+							<p>Jean-Marie <font style="font-variant: small-caps">Beckers</font> (code development)</p>
+							<p>Charles <font style="font-variant: small-caps">Troupin</font> (data interpolation and visualisation) and</p>
+							<p>the VRE team</p>
+							<p>
+								<img src="images/alexander-barth.jpeg" height="150px"/>
+								<img src="images/jeanmarie-beckers.jpeg" height="150px"/>
+								<img src="images/ctroupin.JPG" height="150px"/></p>
+							</section>
+
+
+						</section>
+
+					</section>
+
+					<section>
+
+						<section class="center">
+							<h1>1. How do we perform data interpolation?</h1>
+						</section>
+
+						<section data-background-iframe="maps/BalticSalinity.html" data-background-interactive>
+						</section>
+
+						<section>
+							<video data-autoplay src="images/DIVAnd-REST-VRE-GUI.mp4" width="600px"></video>
+						</section>
+
+						<section>
+							<h2>Deployment in the VRE</h2>
+
+							<ul>
+							<li><a href="https://jupyter.org/hub">Jupyter-hub</a> to manage multiple users</li>
+							<li><a href="https://www.docker.com/">Docker</a> container for the deployment</li>
+							<li>Management/orchestration using <a href="https://kubernetes.io">Kubernetes</a></li>
+						</ul>
+						<br>
+							<img src="images/SDC_TTG/hub_logo.png" height="150px"/>
+							<img src="images/SDC_TTG/docker_logo.png" height="150px"/>
+							<img src="images/SDC_TTG/kubernetes_logo.jpg" height="150px"/>
+						</section>
+
+						<section>
+						<h2>DIVAnd REST API</h2>
+
+						<pre class="bash"><code data-trim data-noescape>
+							docker pull abarth/divand_rest
+							docker run --detach --name=divand_rest_container -it -p 8002:8002 abarth/divand_rest
+						</code></pre>
+
+						<p style="text-align: left;">
+						<a href="http://localhost:8002/">http://localhost:8002/</a> in the web browser
+						</p>
+						</section>
+
+					</section>
+
+					</section>
+
+					<section>
+
+						<section class="center">
+							<h1>2. VRE developments </h1>
+						</section>
+
+						<section class="center">
+							<h2>Liège VRE code sprint (February 4-6, 2019)</h2>
+							<img src="images/SDC_TTG/GCAN9542.JPG" width="80%"/>
+						</section>
+
+						<section style="text-align: left;">
+							<h2>We are we heading?</h2>
+							Concentrate Mikael's time<br>
+							on the integration of the jupyter-notebook interface<br>
+							for multiple-user
+						</section>
+
+						<section style="text-align: left;">
+							<h2>Current status of the component?</h2>
+							<p> <i class="fas fa-battery-full"></i> DIVAnd running in isolation</p>
+							<p> <i class="fas fa-battery-full"></i> DIVAnd Jupter-hub container</p>
+							<p> <i class="fas fa-battery-full"></i> DIVAnd API and file selector</p>
+							<p> <i class="fas fa-battery-quarter"></i> Integration with other VRE components: 20%<br>
+								(difficult to estimate)</p>
+							</section>
+
+							<section style="text-align: left;">
+								<h2>Open issues</h2>
+								<ol>
+									<li> Passing user-credentials (B2DROP username, password, WebDAV URL) to the container</li>
+									<li> Single-sign-on approach to access the individual services<br> (now hard-coded)</li>
+									<li> B2DROP handling ~20 users downloading/uploading a file? <br>
+										"<i>B2DROP is not for development and testing</i>"</li>
+										<li> Implementing the WebDAV put and get requests in the container</li>
+										<li> Updating the file selector for the GUI interface of DIVAnd</li>
+										<li> Testing that the VRE dashboard can start containers</li>
+									</ol>
+								</section>
+
+								<section style="text-align: left;">
+									<h2>Open issues: how to tackle?</h2>
+									<p> WebDAV put and get requests<br> → Alex </p>
+									<p>File selector for the GUI interface of DIVAnd <br> → in collaboration with Sebastian</li>
+									</p>
+									<p><b>Others:</b> dependent on EUDAT for the integration</p>
+								</section>
+
+								<section>
+									<h2>DIVAnd API and file selector</h2>
+									<img src="images/SDC_TTG/divaAPI_fileselector.png" width="60%"/>
+								</section>
+
+								<section>
+									<h2>File upload/download using WebDAV</h2>
+
+									<p style="text-align: left;">Configure WebDAV environment variables</p>
+									<pre class="julia"><code data-trim data-noescape>
+										ENV["WEBDAV_USERNAME"] = "app-username"
+										ENV["WEBDAV_PASSWORD"] = "app-password"
+										ENV["WEBDAV_URL"] = "https://b2drop.eudat.eu/remote.php/webdav"
+									</code></pre>
+
+									<p style="text-align: left;">Download the file to the selected folder</p>
+									<pre class="julia"><code data-trim data-noescape>
+										get("Adriatic/AdriaticSea_SDC.txt", "Adriatic/AdriaticSea_SDC.txt")
+									</code></pre>
+
+									&emsp;
+									<p style="text-align: left;"> WEBDAV_USERNAME<br> WEBDAV_PASSWORD<br> WEBDAV_URL should be set by kubernetes (not by the user)</p>
+								</section>
+
+									<section>
+										<h2>Demo</h2>
+
+										<a href="https://diva.seadatacloud.ml/1234/tree">https://diva.seadatacloud.ml/1234/tree</a>
+
+									</section>
+
+							</section>
+
+							<section>
+
+								<section class="center" data-background="EMODnet-Bio/Lisboa2015_9054.jpg">
+									<h1> Thanks for your attention </h1>
+								</section>
+
+							</section>
+
+						</div>
+						<script src="https://cdn.knightlab.com/libs/juxtapose/latest/js/juxtapose.min.js"></script>
+						<script src="lib/js/head.min.js"></script>
+						<script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"
+						integrity="sha512-/Nsx9X4HebavoBvEBuyp3I7od5tA0UzAxs+j83KgC8PU0kgB4XiK4Lfe4y4cgBtaRJQEIFCW+oC506aPT2L1zw=="
+						crossorigin=""></script>
+						<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.heat/0.2.0/leaflet-heat.js"></script>
+						<script src="js/reveal.js"></script>
+						<script src="js/maps-emodnet.js"></script>
+						<script src="js/basemaps.js"></script>
+						<script type="text/javascript" src="./data/EMODnet-bio/coarsegrid.js"></script>
+						<script type="text/javascript" src="./data/EMODnet-bio/finegrid.js"></script>
+						<script type="text/javascript" src="./data/EMODnet-bio/benthos-g1.js"></script>
+						<script type="text/javascript" src="./data/EMODnet-bio/benthos-g2.js"></script>
+						<script type="text/javascript" src="./data/EMODnet-bio/benthos-g3.js"></script>
+						<script>
+
+						// Full list of configuration options available at:
+						// https://github.com/hakimel/reveal.js#configuration
+						Reveal.initialize({
+							controls: true,
+							progress: true,
+							history: true,
+							center: false,
+
+							transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+							// Optional reveal.js plugins
+							dependencies: [
+								{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+								{ src: 'plugin/zoom-js/zoom.js', async: true },
+								{ src: 'plugin/notes/notes.js', async: true },
+								{ src: 'plugin/markdown/marked.js', async: true },
+								{ src: 'plugin/markdown/markdown.js', async: true },
+								{ src: 'plugin/embed-tweet/embed-tweet.js' },
+								{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+							]
+						});
+
+						function runOnState(state, o) {
+							Reveal.addEventListener(state, function(e) {
+								var removeListener = function() {
+									o.stop();
+									Reveal.removeEventListener('slidechanged', removeListener);
+								}
+								o.start();
+								setTimeout(function() {
+									Reveal.addEventListener('slidechanged', removeListener);
+								}, 0);
+							});
+						}
+
+						runOnState('emodnet-bio-map', window.emodnetBioMap);
+						</script>
+
+					</body>
+					</html>
