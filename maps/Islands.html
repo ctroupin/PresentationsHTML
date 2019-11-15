@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8"/>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>
+
+	</title>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.fullscreen/1.6.0/Control.FullScreen.js"></script>
+	<script src="../js/basemaps.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.css"/>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.fullscreen/1.6.0/Control.FullScreen.css"/>
+	<style type="text/css">
+		#map { height : 75%; }
+		.info { padding: 10px 20px; font: 20px/22px Arial, Helvetica, sans-serif; background: rgba(255,255,255,0.7);
+			box-shadow: 0 0 15px rgba(0,0,0,0.4); border-radius: 7px; }
+		.info h4 { margin: 0 0 5px; color: #777; }
+		.legend { text-align: left; line-height: 18px; color: #555; }
+		.legend i { width: 18px; height: 18px; float: left; margin-right: 8px; opacity: 0.7; }
+		.hexbin-hexagon {
+			stroke: #000;
+			stroke-width: .5px;
+		}
+		.line{
+			width: 10px;
+			height: 10px;
+			color: red
+		}
+	</style>
+
+</head>
+<body>
+	<div id="map" style="width: 100%; height: 900px;"></div>
+	<script type="text/javascript" src="../data/CanaryIslands.geojson"></script>
+	<script type="text/javascript" src="../data/BalearicIslands.geojson"></script>
+	<script type="text/javascript" src="../data/Belgium.geojson"></script>
+	<script type="text/javascript" src="../data/Slovenia.geojson"></script>
+	<script type="text/javascript" src="../data/Estonia.geojson"></script>
+	<script type="text/javascript" src="../data/Slovaquia.geojson"></script>
+	<script src="../js/basemaps.js"></script>
+
+	<script>
+
+	var map = L.map('map', {fullscreenControl: true}).setView([41.47, -3.], 5);
+
+	map.addLayer(CartoDB_DarkMatterNoLabels)
+
+	var baseMaps = {
+		"ESRI Ocean Basemap": Esri_OceanBasemap,
+		"OpenStreetMap": OpenStreetMap_Mapnik,
+		"CartoDB": CartoDB,
+		"CartoDB Dark": CartoDB_DarkMatterNoLabels,
+	};
+
+	var canaryStyle = {
+    "color": "#ff7800",
+    "weight": 2,
+    "opacity": 0.75
+	};
+
+	var balearicStyle = {
+    "color": "#0E9D44",
+    "weight": 2,
+    "opacity": 0.95
+	};
+
+	var belgiumStyle = {
+    "color": "#ffffff",
+    "weight": 2,
+    "opacity": 0.95
+	};
+
+	var sloveniaStyle = {
+    "color": "#427CFF",
+    "weight": 2,
+    "opacity": 0.95
+	};
+
+	var estoniaStyle = {
+    "color": "#F6EE33",
+    "weight": 2,
+    "opacity": 0.95
+	};
+
+	var CanaryIslands = L.geoJSON(canary, {style:canaryStyle}).addTo(map);
+	var BalearicIslands = L.geoJSON(balearic, {style:balearicStyle}).addTo(map);
+	var Belgium = L.geoJSON(belgium, {style:belgiumStyle}).addTo(map);
+	var Slovenia = L.geoJSON(slovenia, {style:sloveniaStyle}).addTo(map);
+	var Estonia = L.geoJSON(estonia, {style:estoniaStyle}).addTo(map);
+	var Slovaquia = L.geoJSON(slovaquia, {style:canaryStyle}).addTo(map);
+
+	L.control.layers(baseMaps, null, {collapsed:false}).addTo(map);
+
+</script>
+</body>
+</html>
