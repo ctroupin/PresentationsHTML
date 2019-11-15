@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+
+	<title>SOCIB: a multi-platform ocean observing system</title>
+
+	<meta name="description" content="Spatial data interpolation">
+	<meta name="author" content="Charles Troupin">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+	<link rel="stylesheet" href="css/reveal.css">
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css"
+	integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
+	crossorigin=""/>
+	<link rel="stylesheet" href="css/theme/sharlo.css" id="theme">
+	<link rel="stylesheet" href="lib/css/monokai.css">
+	<link rel="stylesheet" href="css/pres.css">
+	<link rel="stylesheet" href="css/academicons.css">
+	<link rel="stylesheet" href="lib/css/leaflet-reveal.css">
+	<link title="timeline-styles" rel="stylesheet" href="https://cdn.knightlab.com/libs/timeline3/latest/css/timeline.css">
+
+
+	<style type="text/css">
+	.info { padding: 20px 20px; font: 20px/22px Arial, Helvetica, sans-serif; background: rgba(255,255,255,0.7);
+		box-shadow: 0 0 15px rgba(0,0,0,0.4); border-radius: 7px; }
+		.info h4 { margin: 0 0 5px; color: #777; font: 20px/22px Arial, Helvetica, sans-serif;}
+		.legend { text-align: left; line-height: 18px; color: #555; font: 20px/22px Arial, Helvetica, sans-serif;}
+		.legend i { width: 18px; height: 18px; float: left; margin-right: 8px; opacity: 0.7; }
+		.line{
+			width: 10px;
+			height: 10px;
+			color: red
+		}
+
+		</style>
+
+		<!-- Printing and PDF exports -->
+		<script>
+		var link = document.createElement( 'link' );
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+		document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<div class="slides">
+
+				<section class="center" style="text-align: center;">
+
+					<h2>SOCIB: a multi-platform<br> ocean observing system</h2>
+					<p>
+						<img src="images/logo_gher.png" height="75px"/>
+						<img src="images/logo_uliege.jpeg" height="75px"/>
+					</p>
+				</section>
+
+				<section data-background-iframe="maps/Islands.html" data-background-interactive>
+
+				</section>
+
+				<section>
+					<section class="center" style="text-align: center;">
+						<h1>What is SOCIB</h1>
+						<h2>A little bit of context</h2>
+					</section>
+
+					<section style="text-align: left;">
+						<h2>The ocean is complex</h2>
+						<img src="./images/SOCIB/ocean_complexity2.jpg" height="70%"/>
+					</section>
+
+					<section style="text-align: left;">
+						<h2>A lot of processes are taking place</h2>
+						<h3>at different scales</h3>
+						<img src="./images/SOCIB/web_space_time_scales.png" height="50%"/>
+					</section>
+
+
+					<section style="text-align: left;">
+						<h2>SOCIB, an example of ICTS</h2>
+						ICTS = Singular Scientific and Technological Infrastructures
+
+
+					</section>
+
+
+				</section>
+
+<!----------------------------------------------------------------->
+				<section>
+					<section class="center" style="text-align: center;">
+						<h1>How did I end up there?</h1>
+						<h2>Hint: not because of the beaches</h2>
+					</section>
+
+					<section data-background-iframe="test_timeline.html" data-background-interactive>
+						</section>
+					</section>
+
+			</div>
+			<script src="lib/js/head.min.js"></script>
+			<script src="js/reveal.js"></script>
+			<script src="data/timeline3.json"></script>
+			<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: false,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/markdown/marked.js', async: true },
+					{ src: 'plugin/markdown/markdown.js', async: true },
+				]
+			});
+
+			function runOnState(state, o) {
+				Reveal.addEventListener(state, function(e) {
+					var removeListener = function() {
+						o.stop();
+						Reveal.removeEventListener('slidechanged', removeListener);
+					}
+					o.start();
+					setTimeout(function() {
+						Reveal.addEventListener('slidechanged', removeListener);
+					}, 0);
+				});
+			}
+			</script>
+
+		</body>
+		</html>
