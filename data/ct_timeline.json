@@ -1,0 +1,160 @@
+var timeline_json = {
+    "title": {
+        "media": {
+          "url": "https://www.flickr.com/photos/sharlo1982/15907457855/",
+        },
+        "text": {
+          "headline": "How I end up working in Mallorca?",
+        }
+    },
+    "events": [
+      {
+        "start_date": {
+          "year": "1999"
+        },
+        "text": {
+          "headline": "You're good in maths and physics",
+          "text": "<p>You should study engineering...</p>"
+        }
+      },
+      {
+        "media": {
+          "url": "./timeline/entrance.png",
+        },
+        "start_date": {
+          "day": 1,
+          "month": 7,
+          "year": "1999"
+        },
+        "end_date": {
+          "day": 3,
+          "month": 7,
+          "year": "1999"
+        },
+        "text": {
+          "headline": "Entrance exam... just to try",
+          "text": "<p>Ended up in the top of the list</p>"
+        }
+      },
+      {
+        "start_date": {
+          "year": "2003"
+        },
+        "text": {
+          "headline": "If we fail the exams, we'll switch to 'Physical Education'",
+          "text": "<p>We did not fail</p>"
+        }
+      },
+      {
+        "start_date": {
+          "year": "2004"
+        },
+        "text": {
+          "headline": "Getting nice courses (fluid mechanics, meteorology, ...)",
+          "text": "<p>Finally...</p>"
+        }
+      },
+      {
+        "start_date": {
+          "day": 1,
+          "month": 7,
+          "year": "2005"
+        },
+        "text": {
+          "headline": "Sh**, I'm an engineer!",
+          "text": "<p>What's next?</p>"
+        }
+      },
+      {
+        "media": {
+          "url": "./timeline/pablo.png",
+          "caption": "Pablo Sangrà, Universidad de Las Palmas de Gran Canaria"
+        },
+        "start_date": {
+          "day": 1,
+          "month": 9,
+          "year": "2005"
+        },
+        "end_date": {
+          "day": 1,
+          "month": 9,
+          "year": "2006"
+        },
+        "text": {
+          "headline": "European DEA in Oceanography",
+          "text": "<p>Learning about modelling, data analysis, Linux, ...</p>"
+        }
+      },
+      {
+        "media" : {
+          "url": "https://www.flickr.com/photos/sharlo1982/7700551168/"
+        },
+        "start_date": {
+          "day": 1,
+          "month": 10,
+          "year": "2006"
+        },
+        "end_date": {
+          "day": 1,
+          "month": 9,
+          "year": "2011"
+        },
+        "text": {
+          "headline": "PhD in Oceanography",
+          "text": "<p>Working & travelling across Europe</p>"
+        }
+      },
+      {
+        "media": {
+          "url": "https://www.flickr.com/photos/sharlo1982/5175413919/"
+        },
+        "start_date": {
+          "day": 15,
+          "month": 9,
+          "year": "2011"
+        },
+        "text": {
+          "headline": "Sh**, I'm a doctor",
+          "text": "<p>Un doctorat, et après?</p>"
+        }
+      },
+      {
+        "media" : {
+          "url": "./timeline/IMEDEA1.jpg"
+        },
+        "start_date": {
+          "day": 1,
+          "month": 3,
+          "year": "2013"
+        },
+        "end_date": {
+          "day": 14,
+          "month": 3,
+          "year": "2014"
+        },
+        "text": {
+          "headline": "Researcher at IMEDEA",
+          "text": "<p>Processing satellite altimetry data</p>"
+        }
+      },
+      {
+        "media" : {
+          "url": "./timeline/CollBaix_1142.jpg"
+        },
+        "start_date": {
+          "day": 15,
+          "month": 3,
+          "year": "2014"
+        },
+        "end_date": {
+          "day": 8,
+          "month": 1,
+          "year": "2017"
+        },
+        "text": {
+          "headline": "Head of the Data Center at SOCIB",
+          "text": "<p>Managing data workflow</p>"
+        }
+      },
+    ]
+}
