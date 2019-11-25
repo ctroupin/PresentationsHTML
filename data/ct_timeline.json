@@ -14,7 +14,7 @@ var timeline_json = {
         },
         "text": {
           "headline": "You're good in maths and physics",
-          "text": "<p>You should study engineering...</p>"
+          "text": "<p>You should study engineering...<br>(I was thinking to become a mailman)</p>"
         }
       },
       {
@@ -33,16 +33,19 @@ var timeline_json = {
         },
         "text": {
           "headline": "Entrance exam... just to try",
-          "text": "<p>Ended up in the top of the list</p>"
+          "text": "<p>Ended up in the top of the list<br>So let's continue</p>"
         }
       },
       {
+        "media": {
+          "url": "./timeline/ingphys.jpg",
+        },
         "start_date": {
           "year": "2003"
         },
         "text": {
-          "headline": "If we fail the exams, we'll switch to 'Physical Education'",
-          "text": "<p>We did not fail</p>"
+          "headline": "Thinking about changing...",
+          "text": "<p>If we fail the exams, we'll switch to 'Physical Education'<br>(We did not fail)</p>"
         }
       },
       {
@@ -87,7 +90,7 @@ var timeline_json = {
       },
       {
         "media" : {
-          "url": "https://www.flickr.com/photos/sharlo1982/7700551168/"
+          "url": "./timeline/gher_group.jpg"
         },
         "start_date": {
           "day": 1,
@@ -120,7 +123,7 @@ var timeline_json = {
       },
       {
         "media" : {
-          "url": "./timeline/IMEDEA1.jpg"
+          "url": "./timeline/imedea_ananda.jpg"
         },
         "start_date": {
           "day": 1,
