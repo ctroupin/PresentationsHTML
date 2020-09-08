@@ -143,8 +143,10 @@
 
 						<section>
 
+							<!-- This is a comment
 							<section data-background-iframe="diva_timeline.html" data-background-interactive>
 							</section>
+							-->
 
 							<section class="center">
 								<h1>Implementation: DIVAnd vs. DIVA</h1>
@@ -195,11 +197,22 @@
 							</section>
 
 							<section>
-								<h2 style="margin-bottom:3cm">What are the differences<br> between them?</h2>
+								<h2>Why Julia?</h2>
 
-								<p><i class="fas fa-calculator"></i> Mathematical formulation</p>
-								<p><i class="fas fa-code"></i>Programming language</p>
-								<p><i class="fas fa-user-circle"></i>User interface</p>
+								<img src="images/juliahome.png" height="250px"/>
+
+								<p><i class="fas fa-bolt"></i> Fast, high-level, dynamic language</p>
+								<p><i class="far fa-calendar-alt"></i> Started in 2012, now at version 1.5.1</p>
+								<p><i class="fas fa-unlock-alt"></i> Open source, growing user community</p>
+
+							</section>
+
+							<section>
+								<h2>Why Julia?</h2>
+
+								<img src="images/juliapaper2.jpg" height="350px"/>
+
+								<a href="https://www.nature.com/articles/d41586-019-02310-3"><i class="fas fa-link"></i> https://www.nature.com/articles/d41586-019-02310-3</a>
 
 							</section>
 
@@ -209,27 +222,24 @@
 						<section>
 
 							<section class="center">
-								<h1> How to use DIVAnd?</h1>
+								<h1> How to run & use DIVAnd?</h1>
 							</section>
 
 							<section class="center">
-								<h2>Download the code</h2>
+								<h2>Install Julia and download the code</h2>
 
-								<img class="plain" src="images/596px-Diva46.png" height="340px"><br>
+								<img class="plain" src="images/divand_github.png" height="340px"><br>
 
 								<i class="fab fa-github"></i>
 								<a href="https://github.com/gher-ulg/DIVAnd.jl">https://github.com/gher-ulg/DIVAnd.jl</a>
 								<img src="https://zenodo.org/badge/79277337.svg" style="vertical-align:middle"/> <br>
 
-								<i class="fab fa-github"></i>
-								<a href="https://github.com/gher-ulg/DIVA">https://github.com/gher-ulg/DIVA</a>
-								<img src="https://zenodo.org/badge/80114691.svg" style="vertical-align:middle"/> <br>
-
 							</section>
 
 
 							<section>
-								<p>DIVA (2D) within Ocean Data View</p>
+								<h2>DIVA (2D) within Ocean Data View</h2>
+
 								<a href="http://odv.awi.de/">http://odv.awi.de/</a><br>
 
 								<p class="fragment step-fade-in-then-out"><img class="plain" src="images/odvdiva2.png" height="450px"></p>
@@ -238,20 +248,30 @@
 							</section>
 
 							<section class="center">
-								<p>DIVA-on-Web (2D)</p>
+								<h2>DIVA-on-Web (2D)</h2>
 								<a href="http://ec.oceanbrowser.net/emodnet/diva.html"><i class="fas fa-link"></i> http://ec.oceanbrowser.net/emodnet/diva.html</a><br>
 
 								<img class="plain" src="images/divaonweb.png" height="450px">
 							</section>
 
-							<section class="center">
-								<p>Jupyter notebooks inside the Virtual Research Environment</p>
-								<img class="plain" src="images/divand_notebooks.jpg" height="450px">
+							<section>
+								<h2>Jupyter notebooks inside<br> the Virtual Research Environment</h2>
+
+								<p class="fragment step-fade-in-then-out"><img class="plain" src="images/vre01.png" height="450px"></p>
+								<p class="fragment step-fade-in-then-out"><img class="plain" src="images/vre02.jpg" height="450px"></p>
+								<p class="fragment step-fade-in-then-out"><img class="plain" src="images/vre03.jpg" height="450px"></p>
+
+
 							</section>
 
 							<section class="center">
-								<p>DIVAnd REST API (2D)</p>
+								<h2>DIVAnd REST API</h2>
 								<img class="plain" src="images/divand_rest.png" height="450px">
+
+								<p>
+									<i class="fab fa-github"></i>
+									<a href="https://github.com/gher-ulg/DIVAnd-REST">https://github.com/gher-ulg/DIVAnd-REST</a>
+								</p>
 							</section>
 
 						</section>
@@ -285,46 +305,19 @@
 								<img class="plain" src="images/EMODnetBio_prod.png" height="450px">
 							</section>
 
-
-							<section class="center">
-								BioOracle: <a href="http://www.bio-oracle.org/index.php">http://www.bio-oracle.org/index.php</a><br>
-								<img src="images/biooracle.png" height="150px"/></p>
-							</section>
-						</section>
-					</section>
-
-
-					<section>
 						<section class="center">
-							<h1>Recent developments:<br>
-								interpolation of velocity measurements</h1>
+							<h1>Latest developments<br>
 						</section>
 
 						<section>
 							<h2> High-frequency radar interpolation</h2>
-							<p>Synthetic velocity field, red arrow = measurement</p>
-							<img src="images/current1.png" height="350px"/>
+							<img src="images/radials_Trieste.jpg" height="450px"/>
+							<p>Adding physical constrains to improve the reconstruction</p>
 						</section>
 
 						<section>
-							<h2> High-frequency radar interpolation</h2>
-							<p>Adding the influence of the coast</p>
-							<img src="images/current2.png" height="350px"/>
-						</section>
-
-						<section data-markdown data-transition="fade-in slide-out">
-							<h2> High-frequency radar interpolation</h2>
-							<p>Low horizontal divergence of currents</p>
-							<img src="images/current3.png" height="350px"/>
-						</section>
-
-						<section data-markdown data-transition="fade-in slide-out">
-							<h2> High-frequency radar interpolation</h2>
-							<p>Including Coriolis force and geostrophically balanced mean flow<p>
-
-							<img src="images/divand_hfradar_3D_Coriolis_geo.png" height="350px"/>
-
-							<p> Applications: Ibiza Channel, Gulf of Trieste, Liguria
+							<h2> Heatmap based on presence/absence data</h2>
+							<img src="images/Amphiura_filiformis_density.png" height="450px"/>
 						</section>
 
 					</section>
@@ -369,12 +362,16 @@
 						<section>
 							<h2>Quick recap</h2>
 
-							 <p style="text-align:left"> 1. DIVAnd is a software tool specifically designed for<br> the spatial interpolation
-							 of oceanographic data</p>
-							 <p style="text-align:left"> 2. The code is written in the Julia language and<br> optimised to process large amounts of data</p>
-							 <p style="text-align:left"> 3. The tool is currently used in different EMODnet lots<br>
-								 and deployed in the frame of other Europea initiaves<br> such as PHIDIAS, BlueCloud, EOSC-Hub</p>
-
+							<ol>
+							 <li style="margin-bottom: 35px"> DIVAnd is a software tool specifically designed for<br> the spatial interpolation
+							 of oceanographic data</li>
+							 <li style="margin-bottom: 35px"> The code is written in the <a href="julialang.org/">Julia</a> language and
+								 <br> optimised to process large amounts of data</li>
+							 <li style="margin-bottom: 35px"> The tool is currently used in different <a href="https://www.emodnet.eu/en">EMODnet</a> lots<br>
+								 and deployed in the frame of other Europea initiaves<br>
+								 such as  <img style='vertical-align:middle'; src="images/logo_phidias.jpg" height="35px"> <a href="https://www.phidias-hpc.eu/">PHIDIAS</a>,
+								 <img style='vertical-align:middle'; src="images/logo_bluecloud.jpg" height="35px"> <a href="https://www.blue-cloud.org/">BlueCloud</a>, <img style='vertical-align:middle'; src="images/logo_eoschub.jpg" height="35px"> <a href="https://www.eosc-hub.eu/">EOSC-Hub</a></li>
+							</ol>
 						</section>
 
 					</section>
