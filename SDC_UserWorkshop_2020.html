@@ -18,7 +18,8 @@
 	<link rel="stylesheet" href="css/theme/sdn.css" id="theme">
 	<link rel="stylesheet" href="css/pres.css">
 	<link rel="stylesheet" href="css/academicons.css">
-	<link rel="stylesheet" href="https://cdn.knightlab.com/libs/juxtapose/latest/css/juxtapose.css">
+	<link title="timeline-styles" rel="stylesheet" href="https://cdn.knightlab.com/libs/timeline3/latest/css/timeline.css">
+
 
 	<!-- Printing and PDF exports -->
 	<script>
@@ -80,9 +81,10 @@
 
 						<section class="center">
 
+							<p>Getting gridded fields from sparse, in situ data ⤵️ </p>
 							<p><img src="images/Diva_gridding_canary.png" height="350px"/></p>
 
-							<p>Getting gridded fields from sparse, in situ data<br>
+							<p>
 								(≃ getting information where we don't have measurements)
 							</p>
 						</section>
@@ -98,10 +100,10 @@
 							<img src="images/ODV_Arctic1.png" height="450px"/>
 
 							<ol>
-								<li>A large (huge) amount of data points available</li>
-								<li>Regions without any observation</li>
-								<li>Physical obstacles: the topography</li>
-								<li>Multi-dimensional: longitude, latitude, depth and time</li>
+								<li class="fragment">A large (huge) amount of data points available</li>
+								<li class="fragment">Regions without any observation</li>
+								<li class="fragment">Physical obstacles: the topography</li>
+								<li class="fragment">Multi-dimensional: longitude, latitude, depth and time</li>
 							</ol>
 
 						</section>
@@ -141,19 +143,54 @@
 
 						<section>
 
+							<section data-background-iframe="diva_timeline.html" data-background-interactive>
+							</section>
+
 							<section class="center">
 								<h1>Implementation: DIVAnd vs. DIVA</h1>
 							</section>
 
 							<section class="center">
-								<h1>What is [not] DIVAnd?</h1>
+								<h2>DIVA (1991-2016), alias <i>DIVA classic</i></h2>
 
-								<img src="images/logo_divand.png" height="200px"/>
-								<p>= n dimensional version of DIVA</p>
+								<p>
+							  	<img src="images/596px-Diva46.png" height="300px"/>
+							  </p>
 
-								<p>≠ not a new release of DIVA,<br>
-									= brand new code<br>
-									= current version of the tool<p/>
+								<ul>
+								 <li>Interpolation in <b>2</b> dimensions,
+									 based on a finite-element solver</li>
+								 <li><i class="fas fa-code"></i> Coded in <b>Fortran</b> 77 and 95</li>
+								 <li>Not developed anymore, except bug fixes</li>
+								</ul>
+
+								<p>
+									<i class="fab fa-github"></i>
+									<a href="https://github.com/gher-ulg/DIVA">https://github.com/gher-ulg/DIVA</a>
+									<img src="https://zenodo.org/badge/80114691.svg" style="vertical-align:middle"/> <br>
+								</p>
+							</section>
+
+							<section class="center">
+								<h2>DIVAnd (2014-), alias the <i>new DIVA</i></h2>
+
+								<p>
+									<img src="images/divand_logo00.png" height="200px"/>
+								</p>
+
+								<ul>
+								 <li>Interpolation in <n>n</b> dimensions (n=2, 3, 4, ...)</li>
+								 <li><i class="fas fa-code"></i> Coded in <b>Julia</b> </li>
+								 <li>≠ not a new release of DIVA</li>
+
+								</ul>
+
+
+								<p>
+									<i class="fab fa-github"></i>
+									<a href="https://github.com/gher-ulg/DIVAnd.jl">https://github.com/gher-ulg/DIVAnd.jl</a>
+									<img src="https://zenodo.org/badge/79277337.svg" style="vertical-align:middle"/> <br>
+								</p>
 
 							</section>
 
@@ -298,13 +335,6 @@
 						</section>
 
 						<section class="center">
-							<h2 style="margin-bottom:3cm">Your state after this presentation?</h2>
-							<p> <i class="fas fa-battery-empty"></i> Bad work, I don't want to use this tool </p>
-							<p> <i class="fas fa-battery-half"></i> Not bad, but I'll never use it </p>
-							<p> <i class="fas fa-battery-full"></i> Cool, I want to try it with a dataset of mine </p>
-						</section>
-
-						<section class="center">
 							<h2>Why may I not be able to use it?</h2>
 							<h3 style="margin-bottom:1cm"><i class="fas fa-hourglass-end"></i></h3>
 
@@ -313,6 +343,14 @@
 								<i>"It always takes longer than you expect, <br>
 									even when you take into account Hofstadter's Law.""</i>
 								</p>
+						</section>
+
+						<section class="center">
+							<h2 style="margin-bottom:3cm">Your state after this presentation?</h2>
+
+							<p style="text-align:left"> <i class="fas fa-battery-empty"></i> Bad work, I don't want to use this tool </p>
+							<p style="text-align:left"> <i class="fas fa-battery-half"></i> Not bad, but I'll never use it </p>
+							<p style="text-align:left"> <i class="fas fa-battery-full"></i> Cool, I want to try it with a dataset of mine </p>
 						</section>
 
 						<section >
@@ -328,16 +366,14 @@
 
 						</section>
 
-						<section >
+						<section>
 							<h2>Quick recap</h2>
 
-							<ol>
-							 <li>DIVAnd is a software tool specifically designed for the spatial interpolation
-							 of oceanographic data</li>
-							 <li>Its code is written in the Julia language and optimise to process large amounts of data</li>
-							 <li>The tool is currently used in different EMODnet lots and deployed in the frame
-								 of other Europea initiaves such as PHIDIAS, BlueCloud, EOSC-Hub</li>
-							</ol>
+							 <p style="text-align:left"> 1. DIVAnd is a software tool specifically designed for<br> the spatial interpolation
+							 of oceanographic data</p>
+							 <p style="text-align:left"> 2. The code is written in the Julia language and<br> optimised to process large amounts of data</p>
+							 <p style="text-align:left"> 3. The tool is currently used in different EMODnet lots<br>
+								 and deployed in the frame of other Europea initiaves<br> such as PHIDIAS, BlueCloud, EOSC-Hub</p>
 
 						</section>
 
