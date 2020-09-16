@@ -10,7 +10,7 @@
 	<meta name="author" content="Charles Troupin">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" crossorigin="anonymous">
 	<link rel="stylesheet" href="css/reveal.css">
 	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css"
 	integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
@@ -18,8 +18,6 @@
 	<link rel="stylesheet" href="css/theme/sdn.css" id="theme">
 	<link rel="stylesheet" href="css/pres.css">
 	<link rel="stylesheet" href="css/academicons.css">
-	<link title="timeline-styles" rel="stylesheet" href="https://cdn.knightlab.com/libs/timeline3/latest/css/timeline.css">
-
 
 	<!-- Printing and PDF exports -->
 	<script>
@@ -34,6 +32,13 @@
 	<script src="lib/js/html5shiv.js"></script>
 	<![endif]-->
 </head>
+
+<div id="myLogo" style="background: url("images/logo_uliege.jpeg");
+                        position: absolute;
+                        bottom: 100px;
+                        right: 100px;
+                        width: 100px;
+                        height: 100px;"></div>
 
 <body>
 
@@ -52,6 +57,8 @@
 							<img src="images/logo_seadatacloud.png" height="100px"/>
 							<img src="images/logo_emodnet.png" height="100px"/>
 						</p>
+
+						<p style="color:#858585;"> C. Troupin, A. Barth, J.-M. Beckers & the VRE team</p>
 					</section>
 
 			</section>
@@ -92,7 +99,7 @@
 
 						<section class="center">
 							<h1>Why interpolation<br> in oceanography 🌊<br>
-								is a complex task <i class="fas fa-question-circle"></i></h1>
+								is challenging <i class="fas fa-question-circle"></i></h1>
 						</section>
 
 						<section>
@@ -210,7 +217,7 @@
 							<section>
 								<h2>Why Julia <i class="fas fa-question-circle"></i></h2>
 
-								<img src="images/juliapaper2.jpg" height="350px"/>
+								<img src="images/juliapaper2.jpg" height="350px"/><br>
 
 								<a href="https://www.nature.com/articles/d41586-019-02310-3"><i class="fas fa-link"></i> https://www.nature.com/articles/d41586-019-02310-3</a>
 
@@ -222,7 +229,7 @@
 						<section>
 
 							<section class="center">
-								<h1> How to run & use DIVAnd <i class="fas fa-question-circle"></i></h1>
+								<h1> How to run & use<br>DIVAnd <i class="fas fa-question-circle"></i></h1>
 							</section>
 
 							<section class="center">
@@ -240,7 +247,7 @@
 							<section>
 								<h2>DIVA (2D) within Ocean Data View</h2>
 
-								<a href="http://odv.awi.de/">http://odv.awi.de/</a><br>
+								<a href="http://odv.awi.de/"><i class="fas fa-link"></i> http://odv.awi.de/</a><br>
 
 								<p class="fragment step-fade-in-then-out"><img class="plain" src="images/odvdiva2.png" height="450px"></p>
 								<p class="fragment step-fade-in-then-out"><img class="plain" src="images/salinity_ODV2.png" height="450px"></p>
@@ -257,9 +264,11 @@
 							<section>
 								<h2>Jupyter notebooks as user guidelines</h2>
 
-								<a href="http://ec.oceanbrowser.net/emodnet/diva.html"><i class="fas fa-link"></i> http://ec.oceanbrowser.net/emodnet/diva.html</a><br>
+								<img class="plain" src="images/divaworkshops.png" height="450px"><br>
 
-								<img class="plain" src="images/divaonweb.png" height="450px">
+								<i class="fab fa-github"></i> <a href="https://github.com/gher-ulg/Diva-Workshops/">https://github.com/gher-ulg/Diva-Workshops/</a>
+								<img src="images/zenodo.3769037.png "style="vertical-align:middle"/> <br>
+
 
 							</section>
 
@@ -268,7 +277,7 @@
 
 								<p class="fragment step-fade-in-then-out"><img class="plain" src="images/vre01.png" height="450px"></p>
 								<p class="fragment step-fade-in-then-out"><img class="plain" src="images/vre02.jpg" height="450px"></p>
-								<p class="fragment step-fade-in-then-out"><img class="plain" src="images/vre03.jpg" height="450px"></p>
+								<p class="fragment step-fade-in"><img class="plain" src="images/vre03.jpg" height="450px"></p>
 
 							</section>
 
@@ -297,7 +306,7 @@
 
 							<section class="center">
 								<h3>EMODnet Biology</h3>
-								<p> Creation of specific products</p>
+								<p> Creation of specific abundance products</p>
 								<a href="http://www.emodnet-biology.eu/data-products"><i class="fas fa-link"></i> http://www.emodnet-biology.eu/data-products</a><br>
 
 								<img class="plain" src="images/EMODnetBio_prod.png" height="450px">
@@ -314,8 +323,19 @@
 						</section>
 
 						<section>
-							<h2> Heatmap based on presence/absence data <i class="fas fa-fire"></i></h2>
+							<h2> Heatmap based on presence/absence data <i class="fab fa-gripfire"></i></h2>
 							<img src="images/Amphiura_filiformis_density.png" height="450px"/>
+						</section>
+
+						<section>
+							<h2> Pluto notebooks instead of Jupyer</h2>
+							<img src="images/pluto_ex.png" height="300px"/>
+							<p><b>lightweight:</b> written in pure Julia</p>
+							<p><b>simple:</b> no hidden workspace state, cool user interface</p>
+							<p><b>reactive:</b> automatically updated when a cell changes</p>
+						</section>
+
+						<section data-background-iframe="http://localhost:1234/edit?id=ff5c6e4c-f82c-11ea-1b09-d5d1be36a6d7" data-background-interactive>
 						</section>
 
 					</section>
